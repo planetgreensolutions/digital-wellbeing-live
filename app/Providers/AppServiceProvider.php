@@ -27,7 +27,8 @@ class AppServiceProvider extends ServiceProvider
 		\Schema::defaultStringLength(191);
 		$this->app->bind('chanellog', 'App\Helpers\ChannelWriter');
 		if (getenv('APP_ENV') === 'production') {
-   			$this->app['request']->server->set('HTTPS', true);
+			$this->app['request']->server->set('HTTPS', true);
+			\URL::forceScheme('https');
 		}
 		\Illuminate\Support\Collection::macro('recursively_strip_tag', function () {
 			return $this->map(function ($value) {

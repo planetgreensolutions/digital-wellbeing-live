@@ -43,7 +43,7 @@ else
           <div class="head_box">
             <div class="title_">{!!  $postDetails->getData('post_title') !!}</div>
           </div>
-          <span class="small_title">Digital Citizenship</span>
+<?php /*<span class="small_title">Digital Citizenship</span>*/ ?>
           <div class="text_box">
             <p>{!! $postDetails->getData('description')  !!}</p>
             <?php
@@ -95,7 +95,7 @@ else
       </div>
     </div>
   </section>
-
+<?php /*
   <section class="page-section guide_sec">
     <div class="container">
       <div class="title_box with_tool ">
@@ -294,7 +294,7 @@ else
       
     </div>
   </section>
-
+ */ ?>
 
 </main>
 

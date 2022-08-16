@@ -16,7 +16,7 @@
 		        <div class="box_item tip_item">
 		            <div class="inner_ ">
 		              <div class="top_box">
-		                <a href="{{asset($lang.'/young-people/article/'.$articles->getData('post_slug'))}}" class="full_link"></a>
+		                <a href="{{str_replace('http://172.21.19.103', 'https://digitalwellbeing.ae', asset($lang.'/young-people/article/'.$articles->getData('post_slug')))}}" class="full_link"></a>
 		                <div class="shape_ fill_lightblue">
 		                  <svg x="0px" y="0px" viewBox="0 0 30 30" enable-background="new 0 0 30 30" xml:space="preserve"
 		                    preserveAspectRatio="none">
@@ -24,7 +24,7 @@
 		                  </svg>
 		                </div>
 		                <div class="img_box">
-		                  <div class="img_ b-lazy" data-src="{{ $articleImage }}"></div>
+		                  <div class="img_ b-lazy" data-src="{{ str_replace('http://172.21.19.103', 'https://digitalwellbeing.ae', $articleImage) }}"></div>
 
 		                  @if($tagName)
 		                  <div class="meta_tag color-lightblue">
@@ -41,7 +41,7 @@
 		            
 
 		                <div class="more-wrap ">
-		                  <a class="more_dote_ btn_lightblue" href="{{asset($lang.'/young-people/article/'.$articles->getData('post_slug'))}}">
+		                  <a class="more_dote_ btn_lightblue" href="{{str_replace('http://172.21.19.103', 'https://digitalwellbeing.ae', asset($lang.'/young-people/article/'.$articles->getData('post_slug')))}}">
 		                    <span></span>
 		                    <span></span>
 		                    <span></span>
