@@ -1,0 +1,223 @@
+@extends('frontend.layouts.master') 
+@section('metatags')
+	<meta name="description" content="{{{@$websiteSettings->site_meta_description}}}" />
+	<meta name="keywords" content="{{{@$websiteSettings->site_meta_keyword}}}" />
+	<meta name="author" content="{{{@$websiteSettings->site_meta_title}}}" /> 
+@stop 
+@section('seoPageTitle')
+	<title>
+		<?php $title = ($lang == 'en') ? @$websiteSettings->sitename : @$websiteSettings->sitename_arabic; ?>
+		{{ (!empty($pageTitle))? $pageTitle : @$title }}
+	</title>
+@stop 
+
+@section('styles')
+ @include('frontend.layouts.inner_cssfile')	 
+@stop
+
+@section('content')
+
+<main class="page">
+
+  <section class="page-section">
+    <div class="container">
+		<div class="breadCrumbWrap ">
+        <ol class="breadcrumb">
+            <li><a href="{{ asset('/')}}" class="homebrc">{{lang('home')}}</a></li>            
+             
+            <li class="current">{{ lang('parents') }}</li>
+        </ol>
+    </div>
+       <div class="title_box ">
+         <h1 class="section-title txt-up " >
+            <div class="title_wr">
+               <span>{{ lang('parents') }}</span>
+            </div>
+         </h1>
+      </div>
+      <div class="educators_wrapper">
+        <div class="tab_box">
+             <div class="swiper-container educators-thumbs">
+              <div class="swiper-wrapper">
+				@if(!empty($parentIntro))
+					
+						<div class="swiper-slide educator_sm_item">
+						  <div class="inner_">
+							<div class="title_">{{ lang('introduction') }}</div>
+						  </div>
+						</div>
+					
+				@endif
+             	@if(!empty($parent_guides) && $parent_guides->count() > 0)
+					@foreach($parent_guides as $guides)
+						
+						<div class="swiper-slide educator_sm_item">
+						  <div class="inner_">
+							<div class="title_" data-img="{{ PP($guides->getData('parentguide_banner')) }}">{{ $guides->getData('post_title')}}</div>
+						  </div>
+						</div>
+					@endforeach
+					
+				@endif                         
+              </div>
+            </div>
+			@if(!empty($parent_guides) && $parent_guides->count() > 0)
+            <!-- Add Navigation -->
+            <div class="nav_box box_v_center_">
+              <div class="nav_ left_"><i class="icon icon-icon-arrow-left"></i></div>
+              <div class="nav_ right_"><i class="icon icon-icon-arrow-right"></i></div>
+            </div>
+			@endif    
+        </div>
+
+        <div class="content_box">
+            <div class="swiper-container educator-content">
+			
+			
+			
+              <div class="swiper-wrapper">
+				@if(!empty($parentIntro))
+					<div class="swiper-slide educator_lg_content">
+						<div class="inner_">
+						  <div class="content_wrap">
+							<div class="text_box">
+							  {!! $parentIntro->getData('parentsintro_desc') !!}
+							</div>
+						  </div>
+						  <div class="grid_shape ">
+							  <div class="shape_ fill_blue">
+								<svg x="0px" y="0px" viewBox="0 0 30 30" enable-background="new 0 0 30 30" xml:space="preserve" preserveAspectRatio="none">
+								  <polygon points="30,30 0,30 0,0 27.447,4.787 " />
+								</svg>
+							  </div>
+							  <div class="img_box">
+								<div class="img_ b-lazy"  data-src="{{ PP($parentIntro->getData('pg_banner_image'))}}"></div>
+							  </div>
+							</div>
+						</div>
+					  </div>
+				@endif
+			  @if(!empty($parent_guides) && $parent_guides->count() > 0)
+					@foreach($parent_guides as $pguides)
+						
+					
+                  <div class="swiper-slide educator_lg_content">
+                    <div class="inner_">
+                      <div class="content_wrap">
+                        <div class="text_box">
+                          {!! $pguides->getData('description') !!}
+                        </div>
+
+                        
+                      </div>
+                      <div class="grid_shape ">
+                          <div class="shape_ fill_blue">
+                            <svg x="0px" y="0px" viewBox="0 0 30 30" enable-background="new 0 0 30 30" xml:space="preserve" preserveAspectRatio="none">
+                              <polygon points="30,30 0,30 0,0 27.447,4.787 " />
+                            </svg>
+                          </div>
+
+                          <div class="img_box">
+                            <div class="img_ b-lazy"  data-src="{{ PP($pguides->getData('parentguide_banner'))}}"></div>
+                          </div>
+                        </div>
+                    </div>
+
+                  </div>
+				  
+				  @endforeach
+				@endif
+				  
+				  
+                 
+                  
+                 
+                  
+                  
+              </div>
+            </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+
+@stop
+@section('scripts')
+@parent
+@include('frontend.script.inner_page_script')
+
+<script>
+  var educators_Thumbs;
+    if ($(window).width() > 767) {
+     educators_Thumbs = new Swiper('.educators-thumbs', {
+            direction: 'vertical',
+            spaceBetween: 30,                     
+            slidesPerView: 5,            
+            autoHeight : false,
+            freeMode: true,          
+            watchSlidesVisibility: true,
+            watchSlidesProgress: true,
+            
+            breakpoints: {
+                
+                1300: {            
+                    spaceBetween: 20,
+                },
+                640: {  
+                    direction: 'horizontal',   
+                    slidesPerView: 2,                         
+                    spaceBetween: 5,
+                    
+                }
+            },           
+        });
+
+  }else{
+    educators_Thumbs = new Swiper('.educators-thumbs', {
+             direction: 'horizontal',   
+            spaceBetween: 5,                     
+            slidesPerView: 2,   
+            freeMode: true, 
+            watchSlidesVisibility: true,
+            watchSlidesProgress: true,                              
+        });
+  }
+      
+    var educators_content = new Swiper('.educator-content', {
+            spaceBetween: 0,   
+            effect: 'fade',
+            autoHeight : true,
+            thumbs: {
+                swiper: educators_Thumbs
+            },
+            navigation: {
+                nextEl: '.educators_wrapper .tab_box .nav_.right_',
+                prevEl: '.educators_wrapper .tab_box .nav_.left_',
+            },
+            on: {
+                init: function () {                                                                             
+                    window.bLazy.revalidate();
+
+                    
+                  
+                },
+            }
+        });
+        educators_content.on('slideChange', function (elem,test) {   
+            window.bLazy.revalidate();                    
+        });
+
+
+  $(function() {
+    // read more button event
+    GAP.read_more_and_less();
+
+    
+    $('.tab_box').stickit({top : 100, screenMinWidth : 1024});
+  })
+</script>
+@stop
+

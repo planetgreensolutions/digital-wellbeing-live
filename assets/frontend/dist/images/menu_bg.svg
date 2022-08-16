@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 21.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="989px" height="94px" viewBox="0 0 989 94" enable-background="new 0 0 989 94" xml:space="preserve">
+	 
+	 <style>
+	 @keyframes spin { 
+        from { 
+            transform: rotate(0deg); 
+        } to { 
+            transform: rotate(360deg); 
+        }
+    }
+		.shape_ {
+			transform-box: fill-box;
+			transform-origin: center;
+			animation:  spin 1s linear infinite;
+			
+
+		}
+		.shape_.s1 {
+			animation-delay: .3s;
+			animation-duration: 8s;
+			    animation-direction: reverse;
+		}
+		
+		.shape_.s2 {
+			animation-delay: .8s;
+			animation-duration: 6s;
+		}
+		
+		.shape_.s3 {
+			animation-delay: .1s;
+			animation-duration: 12s;
+		}
+		
+		.shape_.s4 {
+			animation-delay: .2s;
+			animation-duration: 7s;
+			    animation-direction: reverse;
+		}
+		
+		.shape_.s5 {
+			animation-delay: 0s;
+			animation-duration: 18s;
+		}
+		.shape_.s6 {
+			animation-delay: .9s;
+			animation-duration: 11s;
+		}
+		.shape_.s7 {
+			animation-delay: .2s;
+			animation-duration: 13s;
+		}
+		.shape_.s8 {
+			animation-delay: .2s;
+			animation-duration: 17s;
+		}
+		.shape_.s9 {
+			animation-delay: .2s;
+			animation-duration: 22s;
+			    animation-direction: reverse;
+		}
+		
+	 </style>
+<polygon class="shape_ s1" fill="#00b3d5" points="65,58 7,58 7,0 59.776,8.707 "/>
+<polygon class="shape_ s2" fill="#00b3d5" points="163.911,97 105.911,97 114.911,55 158.687,47.707 "/>
+<polygon class="shape_ s3" fill="#00b3d5" points="707.911,60 649.911,60 671,27 702.687,10.707 "/>
+<polygon class="shape_ s4" fill="#00b3d5" points="380.732,97 322.732,97 331.732,43 375.508,35.707 "/>
+<polygon class="shape_ s5" fill="#00b3d5" points="846.732,90 788.732,90 797.732,36 837,51 "/>
+<polygon class="shape_ s6" fill="#00b3d5" points="966.732,66 928,56 917.732,12 961.508,4.707 "/>
+<polygon class="shape_ s7" fill="#00b3d5" points="275.821,50 217.821,50 257.821,14 270.597,0.707 "/>
+<polygon class="shape_ s8" fill="#00b3d5" points="420.418,58.019 416.328,0.164 476.958,29 469.22,49.332 "/>
+<polygon class="shape_ s9" fill="#00b3d5" points="537.198,83.019 533.107,25.164 569.738,43 586,74.332 "/>
+</svg>

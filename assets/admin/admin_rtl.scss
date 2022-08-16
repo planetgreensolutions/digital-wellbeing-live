@@ -1,0 +1,100 @@
+html[dir=rtl] {
+    body {
+        text-align: right;
+        direction: rtl;
+        * {
+            letter-spacing: 0;
+        }
+    }
+    .ml-auto, .mx-auto {
+        margin-right: auto!important;        
+        margin-left: initial !important;
+    }
+    .nav-left-sidebar {
+        right: 0;
+        .navbar-nav {
+            padding: 0;
+            .nav-divider {
+                text-align: right;
+            }
+            .nav-link {
+                text-align: right;
+                i {
+                    margin-left: 9px;
+                    margin-right: 0;
+                }
+            }
+        }
+    
+    }
+    .dashboard-wrapper {
+        margin-right: 264px;
+        margin-left: 0;
+        @media only screen and (max-width: 768px) {
+            margin-right: 0;
+        }
+    }
+    .dropdown-menu {
+        text-align: right;
+    }
+    .dropdown-menu-right {
+        left: 0;
+        right: auto;
+    }
+    .badge-dot {
+        margin-left: 3px;
+        margin-right: 0;
+    }
+    .mr-2, .mx-2 {
+        margin-left: .5rem!important;
+        margin-right: initial !important;
+    }
+    .btn-group, .btn-group-vertical {
+        flex-direction: row-reverse;
+    }
+    .table-responsive {
+        .flagWrapper {
+            > span{
+                &:first-child {
+                    margin-left: 10px;
+                    margin-right: 0;
+                }
+            }
+        }
+        .entityWrapper {
+            > a[data-fancybox] {
+                margin-left: 9px;
+                margin-right: 0;
+            }
+        }
+    }
+    .float-right {
+        float: left!important;
+    }
+    .float-left {
+        float: right!important;
+    }
+    .navbar-nav {
+        padding: 0;
+    }
+    table.bt tfoot th, table.bt tfoot td, table.bt tbody td {
+        flex-direction: row-reverse;
+    }
+    @media (max-width: 767px) {
+        .btn-group, .btn-group-vertical {
+            flex-direction: column;
+        }
+        table.bt tfoot th, table.bt tfoot td, table.bt tbody td {
+            flex-direction: column;
+        }
+    }
+    @media (min-width: 576px) {
+        .float-sm-right {
+            float: left!important;
+        }
+        .float-sm-left {
+            float: right!important;
+        }
+    }
+}
+

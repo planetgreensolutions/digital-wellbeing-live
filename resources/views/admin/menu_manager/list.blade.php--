@@ -1,0 +1,100 @@
+@extends('admin.layouts.master')
+@section('metatags')
+ @parent
+@stop
+@section('seoPageTitle')
+ @parent
+@stop
+@section('styles')
+    @parent
+@stop
+  
+@section('content')
+  @section('bodyClass')
+    @parent
+    hold-transition skin-blue sidebar-mini
+  @stop
+    <aside class="right-side">
+                <!-- Content Header (Page header) -->
+               
+                <!-- Main content -->
+                <section class="content">
+  				       <div class="box container">
+						<div class="row col-sm-6">	
+								<h3>Manage Menu</h3>
+						</div>
+						<div class="col-sm-6">
+							
+							<div class="pull-right">	
+								<a href="{{ asset(Config::get('app.admin_prefix').'/menu_manager/create') }}">
+									<button class="btn bg-olive btn-flat margin">Add New</button>	
+								</a>
+							</div>
+							
+						</div>
+						<div class="clearfix"></div>		
+						<?php if(!empty($userMessage)) { echo $userMessage; } ?>	
+						
+						<div class="box-body table-responsive no-padding">	
+						
+						<?php  if(count($menuList)>0){ ?>												
+							<table id="members1" class="table table-bordered table-hover">
+							 <thead>
+								<tr>
+									<th>#</th>
+									<th>Name</th>								
+									<th>Name Arabic</th>								
+                                    <th>Status</th>					
+									<th>Manage</th>											
+								</tr>
+							</thead>								
+								<tbody>	
+								<?php 
+									$inc=1;
+									foreach ($menuList as $menu){
+                                        $activeUrl= asset( Config::get('app.admin_prefix').'/menu_manager/changestatus/'.$menu->mm_id.'/'.$menu->mm_status);
+                                        $DeactiveUrl= asset(Config::get('app.admin_prefix').'/menu_manager/changestatus/'.$menu->mm_id.'/'.$menu->mm_status);
+								?>
+										<tr>
+											<td>{{ $inc++ }}</td>
+											<td>{!! $menu->mm_title !!}</td>
+											<td><div style="text-align:right;direction:rtl"><strong>{!! $menu->mm_title_arabic !!}</strong></div></td>
+											<td style="background:#ccc;text-align:center"><img src="{{ asset('assets/menu_manager-flags/svg/'.strtolower($menu->iso).'.svg') }}" style="height:40px;width:80px"/></td>
+                                            <td class="status">
+                                                <?php echo ($menu->mm_status == 1)?"<a href='".$activeUrl."' class='btn btn-success btn-sm'><i class='fa fa-check-square'></i></a>":"<a href='".$DeactiveUrl."' class='btn btn-danger btn-sm'><i class='fa fa-times-circle'></i></a>"; ?>
+                                            </td>
+											
+											<td class="manage">
+												<ul>
+                                                    <li>
+                                                        <a href="<?php echo asset(Config::get('app.admin_prefix').'/menu_manager/edit/'.$menu->mm_id); ?>" class="btn btn-primary btn-sm" title="edit"><i class="fa fa-pencil"></i></a> <br/>
+                                                        Edit
+                                                    </li>
+													<li>
+														<a class="btn btn-danger btn-sm deleteRecord" href="<?php echo asset(Config::get('app.admin_prefix').'/menu_manager/delete/'.$menu->mm_id); ?>"  title="delete" ><i class="fa fa-trash-o"></i></a><br/>
+														Delete
+													</li>
+												</ul>
+											</td>
+										</tr>
+										<?php } ?>
+								   </tbody>                            
+							</table>							
+							<?php }else{ ?>
+							<div class="row col-sm-12">
+								<div class="alert alert-danger alert-dismissable">
+									<i class="fa fa-ban"></i>
+									<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+									<b>Alert!</b> No Records Found!.  
+								</div> 
+							</div>  
+							<?php } ?>
+				</div><!-- /.box-body -->                                
+			</div> 	 
+	</section><!-- /.content -->
+</aside>   
+@stop
+@section('scripts')
+@parent 
+@stop
+ 

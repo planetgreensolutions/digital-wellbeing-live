@@ -1,0 +1,120 @@
+@if(!empty($homeYoutubeGal) && $homeYoutubeGal->count() > 0)
+<section class="home-section video_guides-section" id="video_guides">
+  <div class="container-fluid no_pad">
+    <div class="video_gallery_wrapper">
+      <!-- Swiper -->
+      <div class="swiper-container gallery-top">
+        <div class="swiper-wrapper">
+
+		@foreach($homeYoutubeGal as $key=>$videos)
+		@php
+			if(!empty($videos->pm_file_hash)) {
+				$yimageW=PP($videos->pm_file_hash);
+			}
+			else {
+				$yimageW= "https://img.youtube.com/vi/$videos->pm_name/hqdefault.jpg";
+			}
+			$galIndex=str_split(str_pad($key+1,2,0,STR_PAD_LEFT));
+		@endphp
+		<div class="swiper-slide v_gallery_item">
+			<div class="inner_">
+				<!-- video box -->
+				<div class="video_box" id="video_box{{$key}}">
+					<div class="close_btn_wrapper">
+						<a href="#" class="link_" data-farme_id="bgndVideo{{$key}}" data-video_id="{{$videos->pm_name}}">
+						<div class="icon icon-close-round"></div>
+						</a>
+					</div>
+					<div id="bgndVideo{{$key}}" class="player YTPlayer"></div>
+				</div>
+				<!-- video box -->
+
+				<!-- image -->
+				<div class="img_box">
+					<div class="img_ b-lazy" data-src="{{$yimageW}}"></div>
+				</div>
+				<!-- image -->
+
+				<!-- content -->
+				<div class="content_box">
+					<div class="number_">
+					    @foreach($galIndex as $no)
+						    <span>{{$no}}</span>
+						@endforeach
+					</div>
+					<div class="title_">{{$videos->getData('pm_title')}}</div>
+				</div>
+				<!-- content -->	
+
+				<!-- play button -->	
+				<div class="play_btn">
+					<a href="#" class="link_" data-farme_id="bgndVideo{{$key}}" data-video_id="{{$videos->pm_name}}" data-full_load="false">
+						<div class="icon icon-icon-arrow-right">
+
+						</div>
+					</a>
+				</div>
+				<!-- play button -->	
+			</div>
+		</div>
+		 @endforeach 
+        </div>
+      </div>
+	  
+      <div class="gallery-thumbs">
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+		    @php $divClass="fill_lightblue"; @endphp
+				@foreach($homeYoutubeGal as $key1=>$videosThumb)
+				@php
+					if(!empty($videosThumb->pm_file_hash)){
+						$yimage=PP($videosThumb->pm_file_hash);
+					}else{
+						$yimage= "https://img.youtube.com/vi/$videosThumb->pm_name/hqdefault.jpg";
+					}
+				@endphp
+				<div class="swiper-slide v_gallery_t_item">
+					<div class="inner_">
+						<div class="top_box">
+							<div class="shape_ {{$divClass}}">
+								<svg x="0px" y="0px" viewBox="0 0 30 30" enable-background="new 0 0 30 30" xml:space="preserve"
+								preserveAspectRatio="none">
+								<polygon points="30,30 0,30 0,0 27.447,4.787 " />
+								</svg>
+							</div>
+							<div class="img_box">
+								<div class="img_ b-lazy" data-src="{{ $yimage}}"></div>
+							</div>
+						</div>
+						<div class="number_">{{str_pad($key1+1,2,0,STR_PAD_LEFT)}}</div>
+					</div>
+				</div>           
+                  @php  
+                  $divClass=($divClass=="fill_blue")?"fill_lightblue":"fill_blue"  
+                  @endphp
+			@endforeach 
+          </div>
+        </div>
+
+        <!-- Add Navigation -->
+        <div class="nav_box box_center_">
+          <div class="nav_ left_"><i class="icon icon-icon-arrow-left"></i></div>
+          <div class="nav_ right_"><i class="icon icon-icon-arrow-right"></i></div>
+        </div>
+
+        <div class="more-wrap ">
+          <a class="more wt" href="{{ asset($lang.'/youtube_gallery') }}">
+            <div class="line_box">
+              <span></span>
+              <span></span>
+            </div>
+            <span class="text_">{{lang('view_all')}}</span>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+@endif

@@ -1,0 +1,532 @@
+<script src="{{ asset('assets/frontend/dist/scripts/min/home_plugins.js') }}"></script>
+<script src="{{ asset('assets/frontend/dist/scripts/min/home.js') }}"></script>
+<script src="{{ asset('assets/frontend/dist/scripts/vendor/home/jquery.mb.YTPlayer.js') }}"></script>
+
+<script>
+
+
+  
+var myPlayer, newYTPlayerArr = [], currentVideoID; 
+
+
+/* function createPlayer(vID){
+	myPlayer =  new YT.Player('singlePlayer', {
+			autoplay:1,
+			videoId: vID,
+			controls:0,
+			modestbranding:0,
+			enablejsapi:1,
+			fs:1,
+			rel:0,
+			showinfo:0,
+			version:3,
+			allowfullscreen:true,
+			wmode:'transparent',
+			iv_load_policy:3,
+			cc_load_policy:0,
+			playsinline:0,
+			html5:1,
+			startSeconds:50,
+			endSeconds:54,
+			loop:1,
+			
+			widget_referrer:"{{ asset($lang) }}",
+			events: {
+				'onReady': function(_player){
+					myPlayer.playVideo();
+				},
+				
+			},
+			//playerVars: { 'autoplay': 0,allowfullscreen:1 }
+		});
+} */
+
+function createPlayer(vID){
+	currentVideoID = vID;
+	
+	myPlayer =  new YT.Player('singlePlayer', {
+		playerVars: {
+
+    autoplay: 1,            // Auto-play the video on load
+    controls: 0,            // Show pause/play buttons in player
+    showinfo: 0,            // Hide the video title
+    modestbranding: 1,      // Hide the Youtube Logo
+    fs: 1,                  // Hide the full screen button
+    cc_load_policy: 0,      // Hide closed captions
+    iv_load_policy: 3,      // Hide the Video Annotations
+    start: 50,
+    end: 54,
+    autohide: 0, // Hide video controls when playing
+  },
+		events: {
+				'onStateChange': onStateChange, 
+				'onReady': function(_player){
+					_player.target.mute();
+					myPlayer.loadVideoById({
+							'videoId': currentVideoID,
+							'startSeconds': 50,
+							'endSeconds': 54
+					});
+					// myPlayer.loop(true);
+					myPlayer.playVideo();
+				},
+				
+		},
+	});
+	
+	
+}
+
+function onStateChange(state) {
+	console.log(state);
+  if (state.data === YT.PlayerState.ENDED) {
+    /* myPlayer.loadVideoById({
+      videoId: currentVideoID,
+      startSeconds: 50,
+      endSeconds: 54
+    }); */
+	myPlayer.seekTo(myPlayer.getCurrentTime()+.15, true);
+  }
+}
+
+function getPlayer(playerId){
+	if(newYTPlayerArr.length < 1) return;
+	var player;
+	$(newYTPlayerArr).each(function(i,v){
+		if(this.id == playerId){
+			player = this.player;
+			
+			
+			
+		}
+	});
+	
+	return player;
+}
+
+
+
+
+function playVideo(_this){
+	var _id = $(_this).attr('data-player_id'),  $this = $(_this);
+	var player = getPlayer(_id);
+	console.log('Inside play', player);
+	if(!player) return;	
+	var fn = function(){ 
+	  player.playVideo();
+	  $this.closest('.v_gallery_item').addClass('video_playing');
+	  $('body').addClass('video_p');
+	}
+	setTimeout(fn, 1000);
+	 
+}
+
+function pauseVideo(_this){
+	var _id = $(_this).attr('data-player_id'),  $this = $(_this);
+	var player = getPlayer(_id);
+	console.log('Inside pause', player);
+	if(!player) return;	
+	var fn = function(){ 
+	  //player.stopVideo();
+	  player.pauseVideo();
+	  $this.closest('.v_gallery_item').removeClass('video_playing');
+	  $('body').removeClass('video_p');
+	}
+	setTimeout(fn, 1000);
+}
+
+function onYouTubePlayerAPIReady() {
+	console.log('API ready')
+	var tt = $('#singlePlayer').length;
+	if(!tt) return; 
+	// createPlayer(_videoID);
+	var firstVideoID  = $($('#YTGallery').find('.swiper-slide').eq(0)).attr('data-videoID');
+	
+	if(firstVideoID){
+		createPlayer(firstVideoID);
+		/* if(myPlayer){
+			var fn = function(){ 
+			  myPlayer.playVideo();
+			  $this.closest('.v_gallery_item').addClass('video_playing');
+			  $('body').addClass('video_p');
+			}
+			setTimeout(fn, 1000);
+		} */
+	}
+}
+
+
+jQuery(function() {
+
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('link')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+$('document').on('click','.pauseVideo',function(e){
+	 console.log('pause');
+  e.preventDefault();
+ 
+  pauseVideo(this);
+ 
+});
+
+$('.playVideo').on('click',function(e){
+	 console.log('play');
+	e.preventDefault();
+	var playStatus=$(this).attr('data-PlayStatus');
+	if(playStatus==2){
+	playVideo(this);
+	$( this).attr( "data-PlayStatus", 1 );
+	}else{
+	pauseVideo(this);	
+	$( this).attr( "data-PlayStatus", 2 );
+	}
+	
+	
+});
+   
+var home_banner_slider = new Swiper('.banner_slider_wrapper .swiper-container', {
+    slidesPerView: 2,
+    slidesPerColumn: 2,
+    spaceBetween: 50,
+    navigation: {
+        nextEl: '.banner_slider_wrapper .nav_.right_',
+        prevEl: '.banner_slider_wrapper .nav_.left_',
+    },
+    breakpoints: {
+        1500: {
+            spaceBetween: 40,
+        },
+        1300: {
+            spaceBetween: 20,
+        },
+        1025: {
+            slidesPerView: 3,
+        },
+        768: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+        },
+        640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+        },
+        320: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+        }
+    },
+    on: {
+        init: function() {
+            window.bLazy.revalidate();
+        },
+    }
+});
+var home_banner_text_slider = new Swiper('.banner_text_box .swiper-container', { 
+     effect: 'fade',
+     //loop: true,
+     autoplay: {
+        delay: 10000,
+        disableOnInteraction: false,
+      },  
+});
+
+
+home_banner_slider.on('slideChange', function() {
+    window.bLazy.revalidate();
+});
+
+var guides_and_tips_slider = new Swiper('.guides_and_tips-section .swiper-container', {
+    slidesPerView: 3,
+    spaceBetween: 50,
+    navigation: {
+        nextEl: '.guides_and_tips-section .nav_.right_',
+        prevEl: '.guides_and_tips-section .nav_.left_',
+    },
+    breakpoints: {
+        1500: {
+            spaceBetween: 40,
+        },
+        1025: {
+            slidesPerView: 2,
+        },
+        768: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+        },
+        767: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+        }
+    },
+    on: {
+        init: function() {
+            window.bLazy.revalidate();
+        },
+    }
+});
+
+guides_and_tips_slider.on('slideChange', function() {
+    window.bLazy.revalidate();
+});
+
+var video_gallery_Thumbs = new Swiper('.video_gallery_wrapper .gallery-thumbs .swiper-container', {
+    spaceBetween: 10,
+    slidesPerView: 6,
+    freeMode: true,
+    watchSlidesVisibility: true,
+    watchSlidesProgress: true,
+    breakpoints: {
+
+        768: {
+            slidesPerView: 4,
+
+        },
+        400: {
+            slidesPerView: 3,
+            spaceBetween: 5,
+        }
+    },
+    on: {
+        init: function() {
+            window.bLazy.revalidate();
+        },
+    }
+});
+video_gallery_Thumbs.on('slideChange', function() {
+    window.bLazy.revalidate();
+});
+var video_gallery_Top = new Swiper('.video_gallery_wrapper .gallery-top', {
+    spaceBetween: 0,
+    effect: 'fade',
+    navigation: {
+        nextEl: '.video_gallery_wrapper .nav_.right_',
+        prevEl: '.video_gallery_wrapper .nav_.left_',
+    },
+    thumbs: {
+        swiper: video_gallery_Thumbs
+    },
+    on: {
+        init: function() {
+            window.bLazy.revalidate();
+        },
+    }
+});
+video_gallery_Top.on('slideChange', function() {
+    window.bLazy.revalidate();
+});
+
+
+var news_slider = new Swiper('.news_slider_wrapper .swiper-container', {
+    // direction: 'vertical', 
+    slidesPerView: 1,
+    slidesPerColumn: 2,
+    spaceBetween: 50,
+    navigation: {
+        nextEl: '.news_slider_wrapper .nav_.right_',
+        prevEl: '.news_slider_wrapper .nav_.left_',
+    },
+    breakpoints: {
+        1500: {
+            spaceBetween: 40,
+        },
+        1300: {
+            spaceBetween: 20,
+        },
+        768: {
+
+            spaceBetween: 30,
+        },
+        640: {
+            slidesPerView: 1,
+            slidesPerColumn: 1,
+            spaceBetween: 20,
+        }
+    },
+    on: {
+        init: function() {
+            window.bLazy.revalidate();
+        },
+    }
+});
+
+news_slider.on('slideChange', function() {
+    window.bLazy.revalidate();
+});
+
+if ($(window).width() > 767) {
+    var resources_Thumbs = new Swiper('.resources-section .resources-thumbs', {
+        direction: 'vertical',
+        spaceBetween: 30,
+        slidesPerView: 6,
+        freeMode: true,
+        watchSlidesVisibility: true,
+        watchSlidesProgress: true,
+
+        breakpoints: {
+
+            1300: {
+                spaceBetween: 20,
+            },
+            640: {
+                direction: 'horizontal',
+                slidesPerView: 2,
+                spaceBetween: 5,
+            }
+        },
+        on: {
+            init: function() {
+                window.bLazy.revalidate();
+
+                var height_ = $('.resources-section .middle_box .resources_sm_item').outerHeight(true);
+
+                $('.middle_box').css('--h_off', height_);
+            },
+        }
+    });
+
+} else {
+    var resources_Thumbs = new Swiper('.resources-section .resources-thumbs', {
+        slidesPerView: 2,
+        spaceBetween: 5,
+        freeMode: false,
+        watchSlidesVisibility: true,
+        watchSlidesProgress: true,
+        on: {
+            init: function() {
+                window.bLazy.revalidate();
+
+                var height_ = $('.resources-section .middle_box .resources_sm_item').outerHeight(true);
+
+                $('.middle_box').css('--h_off', height_);
+            },
+        }
+    });
+}
+
+resources_Thumbs.on('slideChange', function() {
+	console.log('asd');
+    window.bLazy.revalidate();
+});
+
+var vresources_Top = new Swiper('.resources-section .resources-top', {
+    spaceBetween: 0,
+    effect: 'fade',
+    thumbs: {
+        swiper: resources_Thumbs
+    },
+    navigation: {
+        nextEl: '.resources-section .middle_box .nav_.right_',
+        prevEl: '.resources-section .middle_box .nav_.left_',
+    },
+    on: {
+        init: function() {
+            window.bLazy.revalidate();
+
+            $('.resources-section .resources-top .resources_lg_item').each(function() {
+                var this_ = $(this),
+                    el_ = this_.find('.swiper-container'),
+                    nav_right_ = this_.find('.nav_.right_'),
+                    nav_left_ = this_.find('.nav_.left_');
+
+                var resources_inner_slider = new Swiper(el_, {
+                    slidesPerView: 2,
+                    slidesPerColumn: 2,
+                    spaceBetween: 5,
+                    slidesPerGroup: 2,
+                    navigation: {
+                        nextEl: nav_right_,
+                        prevEl: nav_left_,
+                    },
+                    breakpoints: {
+
+                        /* 991: {
+                             slidesPerView: 3,
+                             spaceBetween: 30,
+                         },
+                         640: {
+                             slidesPerView: 2,
+                             spaceBetween: 20,
+                         },
+                         320: {
+                             slidesPerView: 1,
+                             spaceBetween: 10,
+                         }*/
+                    },
+                    on: {
+                        init: function() {
+                            window.bLazy.revalidate();
+                        },
+                    }
+                });
+                resources_inner_slider.on('slideChange', function() {
+                    window.bLazy.revalidate();
+                });
+            });
+        },
+    }
+});
+vresources_Top.on('slideChange', function() {
+    window.bLazy.revalidate();
+});
+});
+</script>
+<script>
+$(document).ready(function() {
+    $('body').addClass('loaded');
+
+    var max_height = $('.digital_issues-section .content_box').height();
+
+    $('.digital_issues-section .issue_box ').css({
+        '--max_h': max_height
+    });
+
+    $(".digital_issues-section .issue_box .issue_list").mCustomScrollbar({
+        scrollButtons: {
+            enable: false
+        },
+        keyboard: {
+            scrollType: "stepped"
+        },
+
+        theme: "rounded-dark",
+        autoExpandScrollbar: true,
+
+    });
+
+    $('#client_tab').responsiveTabs({
+        startCollapsed: 'accordion',
+        activate: function() {
+            var client_slider = new Swiper('.client_slider_wrapper.r-tabs-state-active .swiper-container', {
+                slidesPerView: 4,
+                spaceBetween: 50,
+                breakpoints: {
+
+                    991: {
+                        slidesPerView: 3,
+                        spaceBetween: 30,
+                    },
+                    640: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    }
+                },
+                on: {
+                    init: function() {
+                        window.bLazy.revalidate();
+                        setTimeout(function() {
+                            var slider_h = $('.client_slider_wrapper.r-tabs-state-active').outerHeight(true);
+                            $('.client_slider_wrapper').css('max-height', slider_h);
+                        }, 1000)
+
+                    },
+                }
+            });
+
+
+        },
+
+    });
+});
+</script>
