@@ -5,9 +5,9 @@
             if ($articles->getData('i_want_help_with_image')) {
                 $articleImage = PP($articles->getData('i_want_help_with_image'));
             }
-            
+
             $x = $loop->index + 1;
-            
+
             if ($x % 4 == 0) {
                 $stage_color = '#BB4EF1';
             } elseif ($x % 3 == 0) {
@@ -17,11 +17,11 @@
             } else {
                 $stage_color = '#34E497';
             }
-            
+
         @endphp
 
         <div class="stage  ">
-            <a href="{{ asset($lang . '/i-want-help-with/' . $articles->post_slug) }}">
+            <a href="{{ str_replace('http://172.21.19.103', 'https://digitalwellbeing.ae', asset($lang . '/i-want-help-with/' . $articles->post_slug)) }}">
                 <svg preserveAspectRatio="xMinYMin" class="svg-solid" id="stage_1" width="451.17" height="324.216"
                     viewBox="0 0 451.17 324.216">
                     <path data-name="Path 11"
@@ -48,7 +48,7 @@
 
 
                 <div class="img-wrapper">
-                    <div class="img_" style="background-image: url({{ $articleImage }});"></div>
+                    <div class="img_" style="background-image: url({{ str_replace('http://172.21.19.103', 'https://digitalwellbeing.ae', $articleImage) }});"></div>
                 </div>
                 <div class="text-box">
                     <p>{{ lang('readmore') }}</p>
@@ -56,7 +56,7 @@
 
             </a>
 
-            <a class="more-link">{{ $articles->getData('post_title') }}</a>
+            <a class="more-link">{{ str_replace('http://172.21.19.103', 'https://digitalwellbeing.ae', $articles->getData('post_title')) }}</a>
         </div>
 
     @endforeach
