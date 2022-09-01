@@ -1354,4 +1354,9 @@ span.nmbr_ {
 .help-box .boxes .img_box_new .img-box .play_icon .icon {
     display: flex;
 }
+
+html[dir=rtl] .help-box .boxes .desc-box ul li:before {
+    left: auto;
+    right: 0;
+}
 /* AL 31-08-2022 */
