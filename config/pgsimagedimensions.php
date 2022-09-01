@@ -133,4 +133,8 @@ return [
         'large' => ['width' => 449, 'height' => 601],
         'thumb' => ['width' => 250, 'height' => 250],
     ],
+    'young_people_banner_inner_file' => [
+        'large' => ['width' => 1100, 'height' => 500],
+        'thumb' => ['width' => 550, 'height' => 250],
+    ],
 ];

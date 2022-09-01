@@ -47,7 +47,7 @@ else
             </svg>
           </div>
           <div class="img_box">
-            <div class="img_ b-lazy b-loaded" style="background-image: url(&quot;{{PP($postDetails->getData('young_people_article_image'))}}&quot;);"></div>
+            <div class="img_ b-lazy b-loaded" style="background-image: url(&quot;{{PP($postDetails->getData('young_people_banner_inner'))}}&quot;);"></div>
           </div>
         </div>
 
