@@ -130,8 +130,29 @@
                                 @if($articleDetails->getData('help_with_desc_image'))
                                 <div class="img_box_new ">
                                     <div class="i_m side_box" >
-                                        <div class="img-box">
-                                            <div class="img_" style="background-image: url({{ PP($articleDetails->getData('help_with_desc_image')) }});"></div>
+
+                                    <div class="shape_ fill_lightblue">
+                                                        <svg x="0px" y="0px" viewBox="0 0 30 30" enable-background="new 0 0 30 30" xml:space="preserve" preserveAspectRatio="none">
+                                                        <polygon points="30,30 0,30 0,0 27.447,4.787 "></polygon>
+                                                        </svg>
+                                                    </div>
+
+                                        <div class="swiper-container">
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide">
+                                                    <div class="img-box">
+                                                        <div class="img_" style="background-image: url({{ PP($articleDetails->getData('help_with_desc_image')) }});"></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="swiper-slide">
+                                                    <div class="img-box">
+                                                        <div class="img_" style="background-image: url({{ PP($articleDetails->getData('help_with_desc_image')) }});"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="swiper-pagination"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -237,9 +258,10 @@
     </script>
 
     <script>
-        var swiper = new Swiper(".article-slide", {
+        var swiper = new Swiper(".side_box .swiper-container", {
+            spaceBetween: 20,
             pagination: {
-                el: ".swiper-pagination",
+                el: ".side_box  .swiper-pagination",
             },
         });
     </script>

@@ -1242,6 +1242,7 @@ span.nmbr_ {
     width: 100%;
     padding-top: 100%;
     height: 0;
+    overflow: hidden;
 }
 .help-box .boxes.wrap_ .desc-box{
     margin: 0;
@@ -1256,6 +1257,12 @@ span.nmbr_ {
     display: block;
     width: 100%;
     height: auto;
+}
+.help-box .boxes .img_box_new .img-box .img_{
+    transition: all 0.3s ease;
+}
+.help-box .boxes .img_box_new .img-box:hover .img_{
+    transform: scale(1.2) rotate(-10deg);
 }
 
 @media only screen and (max-width:1200px){
@@ -1309,5 +1316,12 @@ span.nmbr_ {
 .dt-box .content-box .text_box p {
     font-weight: 500;
 }
-
+.help-box .boxes .img_box_new .shape_ {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateY(4%) translateX(6%);
+}
 /* AL 31-08-2022 */
