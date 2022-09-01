@@ -34,7 +34,7 @@
                         <div class="title_box">
                             <h1 class="section-title txt-up"><span>{{ $young_people->getData('post_title') }}</span></h1>
                         </div>
-                        <div class="desc">
+                        <div class="text_box">
                             {!! $young_people->getData('description') !!}
                         </div>
                     </div>

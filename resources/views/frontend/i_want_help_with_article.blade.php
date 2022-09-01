@@ -128,14 +128,17 @@
                             <div class="boxes">
 
                                 @if($articleDetails->getData('help_with_desc_image'))
-                                <div class="img-box">
-                                    <div class="img_" style="background-image: url({{ PP($articleDetails->getData('help_with_desc_image')) }});">
+                                <div class="img_box_new ">
+                                    <div class="i_m side_box" >
+                                        <div class="img-box">
+                                            <div class="img_" style="background-image: url({{ PP($articleDetails->getData('help_with_desc_image')) }});"></div>
+                                        </div>
                                     </div>
                                 </div>
                                 @endif
-
+ 
                                 <div class="desc-box">
-                                    <div class="text_">
+                                    <div class="text_box">
                                         {!! $articleDetails->getData('description') !!}
                                     </div>
                                 </div>

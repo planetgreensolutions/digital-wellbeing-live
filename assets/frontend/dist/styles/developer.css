@@ -1230,3 +1230,84 @@ span.nmbr_ {
     margin: 0.25em 0;
 }
 /* AL 12-08-2022 */
+
+/* AL 31-08-2022 */
+.help-box .boxes .img_box_new{
+    position: relative;
+    display: block;
+    width: 35%;
+}
+
+.help-box .boxes .img_box_new .img-box {
+    width: 100%;
+    padding-top: 100%;
+    height: 0;
+}
+.help-box .boxes.wrap_ .desc-box{
+    margin: 0;
+}
+.help-box .boxes.wrap_{
+   position: relative;
+   flex-wrap: wrap;
+}
+
+.help-box .boxes.wrap_ .boxes .img_box_new .i_m{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+@media only screen and (max-width:1200px){
+    .help-box .boxes.wrap_ {
+        flex-wrap: wrap;
+    }
+    .help-box .boxes.wrap_  .img_box_new{
+        width: 100%;
+    }
+
+    .help-box .boxes.wrap_ .desc-box{
+        margin: 0;
+        padding: 1.5em 0;
+        width: 100%;
+    }
+
+}
+
+.home_social_feed_wrapper {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.home_social_feed_wrapper .crt-panel-next, .home_social_feed_wrapper .crt-panel-prev {
+    background: #54c8e8;
+}
+
+
+@media only screen and (min-width:1200px){
+    .title_box .section-title.sm_ {
+        font-size: 3.25vw;
+    }
+}
+
+@media only screen and (max-width:767px){
+    .banner_section .section-block .banner_img_box {
+        width: 100%;
+    }
+    
+    .banner_section .section-block .title_box {
+        width: 100%;
+    }
+}
+
+
+.text_box p+h2, .text_box ul+h2, .text_box ol+h2{
+    margin-top: 1em;
+}
+
+.dt-box .content-box .text_box p {
+    font-weight: 500;
+}
+
+/* AL 31-08-2022 */
