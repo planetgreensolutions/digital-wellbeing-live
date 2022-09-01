@@ -408,6 +408,14 @@ else
             pagination: {
                 el: ".side_box  .swiper-pagination",
             },
+            on: {
+              init: function(){
+                window.bLazy.revalidate();
+              },
+              slideChange: function() {
+                window.bLazy.revalidate();
+              }
+            }
         });
     </script>
 
