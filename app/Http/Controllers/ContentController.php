@@ -526,6 +526,7 @@ class ContentController extends FrontendBaseController {
 
 				break;
 			case 'young-people':
+				
 				$page = 'frontend.young_people';
 				$this->data['bodyClass'] = '__young-people';
 				$this->data['tags'] = $this->getPostTypeTags('young_people_article');
@@ -551,6 +552,8 @@ class ContentController extends FrontendBaseController {
 				$young_people_blogs = PostModel::where('post_type', '=', 'young_people_blog')->where($lang_title, '!=', 'NA')
 					->orderByMeta('publish_date', 'DESC')->orderBy('post_priority', 'ASC')->active()->paginate(3);
 
+				$guides = PostModel::where('post_type', '=', 'young-people-guides')->orderBy('post_priority', 'ASC')->active()->paginate(4);
+
 				$ajaxResponse = [
 					'status' => true,
 					'lang' => $lang,
@@ -568,10 +571,17 @@ class ContentController extends FrontendBaseController {
 						$ajaxResponse['blogHTML'] = view('frontend.ajax.young_people_blogs_loader', $this->data)->render();
 						return response()->json($ajaxResponse);
 					}
+					elseif (request()->input('_tab') == "guides") {
+						$this->data['guides'] = $guides;
+						$ajaxResponse['moreGuides'] = !empty($guides->nextPageUrl()) ? $guides->nextPageUrl() : '';
+						$ajaxResponse['guidesHTML'] = view('frontend.ajax.young_people_guides_loader', $this->data)->render();
+						return response()->json($ajaxResponse);
+					}
 				}
 
 				$this->data['young_people_articles'] = $young_people_articles;
 				$this->data['young_people_blogs'] = $young_people_blogs;
+				$this->data['guides'] = $guides;
 
 				break;
 			case 'children':
