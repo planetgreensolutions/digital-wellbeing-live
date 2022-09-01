@@ -32,6 +32,7 @@ $changeLang = ($lang == 'ar') ? 'en' : 'ar';
 @include('frontend.home.guides_tips')
 @include('frontend.home.video_guides')
 @include('frontend.home.resource_guides')
+@include('frontend.home.social_feeds')
 @include('frontend.home.partners')
 
 
