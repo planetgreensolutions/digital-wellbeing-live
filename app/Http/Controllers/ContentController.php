@@ -702,7 +702,8 @@ class ContentController extends FrontendBaseController {
 				$page = 'frontend.determination_article_details';
 				break;
 			case 'young-people':
-				$postDetails = PostModel::with(['category'])->where('post_slug', $subalias)->active()->first();
+				
+				$postDetails = PostModel::with(['category','media'])->where('post_slug', $subalias)->active()->first();
 				if (empty($postDetails)) {
 					return redirect()->to($lang . '/young-people');
 				}
