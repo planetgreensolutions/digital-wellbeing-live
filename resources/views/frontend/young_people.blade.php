@@ -160,6 +160,7 @@
                 <div class="inner_" id="guideWrapper">
                     @include('frontend.ajax.young_people_guides_loader')
                 </div>
+                @if(!empty($guides) && !empty($guides->nextPageUrl()))
                 <div style="{{ $article_loader_style }}" id="load_more_guides" class="more-wrap text-center"
                     data-redirect="{{ $guides->nextPageUrl() }}">
                     <a class="more " href="#">
@@ -170,6 +171,7 @@
                         <span class="text_">{{ lang('load_more') }}</span>
                     </a>
                 </div>
+                @endif
 
                 <div class="loader_box">
                     <div class="loader_wrapper">
