@@ -4,12 +4,12 @@
 
 <script>
 
-     $(function() {
+    /*  $(function() {
         $.fancybox.open({
             src : '#charterPledge',
             wrapCSS  : 'fancybox-custom' 
         });
-    });
+    }); */
 
 
     var isVideoPlaying = false;

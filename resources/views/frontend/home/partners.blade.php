@@ -82,7 +82,7 @@
 
   </div>
 </section>
-
+<?php /*
 @if(!empty($charter_pledge_popup))
 <div class="min_popup" id="charterPledge" style="display:none">
    <div class="inner_">
@@ -99,6 +99,8 @@
     </div>
    </div>
 </div>
+
 @endif
+*/ ?>
 
 @endif

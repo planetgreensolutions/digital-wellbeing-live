@@ -47,7 +47,7 @@ else
             </svg>
           </div>
           <div class="img_box">
-            <div class="img_ b-lazy b-loaded" style="background-image: url(&quot;http://localhost/digital-wellbeing-live/storage/app/public/post/large/edejRb6JKpO15rs3UvWi7A3nP9gyJe3cFed7CRQD.jpeg&quot;);"></div>
+            <div class="img_ b-lazy b-loaded" style="background-image: url(&quot;{{PP($postDetails->getData('young_people_article_image'))}}&quot;);"></div>
           </div>
         </div>
 
@@ -60,8 +60,8 @@ else
 
     <div class="breadCrumbWrap ">
 			<ol class="breadcrumb">
-				<li><a href="#" class="homebrc">Home</a></li>   
-				<li><a href="#" class="homebrc">Youth</a></li>   				
+				<li><a href="{{URL::to('/')}}" class="homebrc">{{lang('home')}}</a></li>   
+				<li><a href="{{URL::to($lang.'/young-people')}}" class="homebrc">{{lang('youth')}}</a></li>   				
 				<li class="current">{!!  $postDetails->getData('post_title') !!}</li>
 			</ol>
 		</div>
@@ -91,7 +91,7 @@ else
                       </svg>
                     </div>
                     <div class="img_box">
-                      <div class="img_ b-lazy" data-src="http://localhost/digital-wellbeing-live/assets/frontend/dist/images/default_tips_image.jpg"></div>
+                      <div class="img_ b-lazy" data-src="{{PP($postDetails->getData('young_people_article_image'))}}"></div>
                     </div>
                 </a>
               </div>
