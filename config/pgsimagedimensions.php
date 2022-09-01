@@ -129,4 +129,8 @@ return [
     'youtube_image_file' => [
         'large' => ['width' => 1330, 'height' => 800],
     ],
+    'young_people_guides_image_file' => [
+        'large' => ['width' => 449, 'height' => 601],
+        'thumb' => ['width' => 250, 'height' => 250],
+    ],
 ];

@@ -108,7 +108,7 @@
 						</li>
 
 						<li class="nav-item">
-							<a class="nav-link {{ get_admin_menu_active_class($currentURI,['young_people','young_people_article','young_people_blog']) }}" href="#" data-toggle="collapse" aria-expanded="false" data-target="#young_people_controls" aria-controls="submenu-1-1"><i class=" fas fa-lock"></i>Manage Young People</a>
+							<a class="nav-link {{ get_admin_menu_active_class($currentURI,['young_people','young_people_article','young_people_blog','young-people-guides']) }}" href="#" data-toggle="collapse" aria-expanded="false" data-target="#young_people_controls" aria-controls="submenu-1-1"><i class=" fas fa-lock"></i>Manage Young People</a>
 							<div id="young_people_controls" class="collapse submenu" style="">
 								<ul class="nav flex-column">
 									<li class="nav-item">
@@ -119,6 +119,9 @@
 									</li>
 									<li class="nav-item">
 										<a class="nav-link {{ get_admin_menu_active_class($currentURI,'young_people_blog') }}" href="{{ apa('post/young_people_blog') }}"><i class="fas fa-users"></i>Manage Blogs</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link {{ get_admin_menu_active_class($currentURI,'young-people-guides') }}" href="{{ apa('post/young-people-guides') }}"><i class="fas fa-users"></i>Manage Guides</a>
 									</li>
 
 								</ul>

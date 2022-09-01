@@ -147,8 +147,42 @@
         </section>
 
         @endif
+        @if(!empty($guides)  && $guides->isNotEmpty())
+        <section class="page-section guide_sec">
+            <div class="container">
+                <div class="title_box with_tool ">
+                    <h1 class="section-title txt-up ">
+                    <div class="title_wr">
+                        <span> {{lang('guides')}}</span>
+                    </div>
+                    </h1>
+                </div>
+                <div class="inner_" id="guideWrapper">
+                    @include('frontend.ajax.young_people_guides_loader')
+                </div>
+                <div style="{{ $article_loader_style }}" id="load_more_guides" class="more-wrap text-center"
+                    data-redirect="{{ $guides->nextPageUrl() }}">
+                    <a class="more " href="#">
+                        <div class="line_box">
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <span class="text_">{{ lang('load_more') }}</span>
+                    </a>
+                </div>
 
-        @if(!empty($young_people_blogs) && $young_people_blogs->count() > 0)
+                <div class="loader_box">
+                    <div class="loader_wrapper">
+                        <div class="circle bot"></div>
+                        <div class="circle mid"></div>
+                        <div class="circle top"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        @endif
+
+       <?php /* @if(!empty($young_people_blogs) && $young_people_blogs->count() > 0)
         <section class="page-section">
             <div class="container">
                 <div class="title_box ">
@@ -189,7 +223,7 @@
             </div>
         </section>
 
-        @endif
+        @endif */ ?>
 
 
     </main>
@@ -359,6 +393,13 @@
                             activeTab = blogsActiveTab;
 
                             $("#load_more_" + blogsActiveTab).remove();
+                        }else if (_tab == "guides") {
+                            wrapperName = "guideWrapper";
+                            dataHTML = responseData.guidesHTML;
+                            paginateURL = responseData.moreGuides;
+                            activeTab = 'guides';
+
+                            $("#load_more_guides").remove();
                         }
 
                         switch (_mode) {
@@ -401,6 +442,19 @@
             };
 
             fetchResults(_url, _data, 'append', 'articles', id);
+        });
+        $(document).on('click', "#load_more_guides", function(e) {
+            e.preventDefault();
+
+            var id = $(this).attr('id');
+            var _url = $(this).attr('data-redirect');
+
+            var _data = {
+                "_token": "{{ csrf_token() }}",
+                "_tab": "guides",
+            };
+
+            fetchResults(_url, _data, 'append', 'guides', id);
         });
 
         // Video Load more
