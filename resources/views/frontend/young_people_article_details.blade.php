@@ -32,6 +32,78 @@ else
 
 <main class="page ">
 
+<section class="banner_section ">
+    <div class="container">
+		
+      <div class="section-block ">
+        <div class="title_box ">
+          <h1 class="section-title sm_">{!!  $postDetails->getData('post_title') !!}</h1>
+        </div>
+
+        <div class="banner_img_box">
+          <div class="shape_ fill_lightblue">
+            <svg x="0px" y="0px" viewBox="0 0 30 30" enable-background="new 0 0 30 30" xml:space="preserve" preserveAspectRatio="none">
+              <polygon points="30,30 0,30 0,0 27.447,4.787 "></polygon>
+            </svg>
+          </div>
+          <div class="img_box">
+            <div class="img_ b-lazy b-loaded" style="background-image: url(&quot;http://localhost/digital-wellbeing-live/storage/app/public/post/large/edejRb6JKpO15rs3UvWi7A3nP9gyJe3cFed7CRQD.jpeg&quot;);"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+<section class="page-section">
+  <div class="container">
+
+    <div class="breadCrumbWrap ">
+			<ol class="breadcrumb">
+				<li><a href="#" class="homebrc">Home</a></li>   
+				<li><a href="#" class="homebrc">Youth</a></li>   				
+				<li class="current">{!!  $postDetails->getData('post_title') !!}</li>
+			</ol>
+		</div>
+
+    <div class="degital_details_wrapper">
+      <div class="content_box">
+
+      <div id="degital_tab">
+        <div class="text_box">
+          <h2>{!!  $postDetails->getData('post_title') !!}</h2>
+        {!! $postDetails->getData('description')  !!}
+        </div>
+      </div>
+
+      </div>
+
+      <div class="side_box">
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide side_bar_gallery_item">
+              <div class="inner_box">
+                <a href="#" data-fancybox class="link_">
+                  <div class="shape_ fill_lightblue">
+                      <svg x="0px" y="0px" viewBox="0 0 30 30" enable-background="new 0 0 30 30" xml:space="preserve"
+                      preserveAspectRatio="none">
+                      <polygon points="30,30 0,30 0,0 27.447,4.787 " />
+                      </svg>
+                    </div>
+                    <div class="img_box">
+                      <div class="img_ b-lazy" data-src="http://localhost/digital-wellbeing-live/assets/frontend/dist/images/default_tips_image.jpg"></div>
+                    </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- 
 <section class="page-section article_detail">
     <div class="container">
       
@@ -94,7 +166,8 @@ else
 
       </div>
     </div>
-  </section>
+  </section> -->
+  
 <?php /*
   <section class="page-section guide_sec">
     <div class="container">

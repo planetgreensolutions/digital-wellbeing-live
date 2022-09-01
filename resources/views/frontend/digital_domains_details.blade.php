@@ -28,7 +28,7 @@
 		
       <div class="section-block ">
         <div class="title_box ">
-          <h1 class="section-title "> {!! encloseWordSpan( $digital_domain->getData('post_title') ) !!}</h1>
+          <h1 class="section-title "> {{$digital_domain->getData('post_title')}}</h1>
           <h2 class="section-sub-title"><span>{{ $digital_domain->getData('sub_title')  }}</span></h2>
         </div>
 
