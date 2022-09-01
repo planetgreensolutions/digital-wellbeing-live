@@ -2,7 +2,7 @@
     <div class="container">
 
         <div class="title_box text-center">
-            <h1 class="section-title"><span>Social Feeds</span></h1>
+            <h1 class="section-title"><span>{{lang('social_feeds')}}</span></h1>
         </div>
 
         <div class="home_social_feed_wrapper">
