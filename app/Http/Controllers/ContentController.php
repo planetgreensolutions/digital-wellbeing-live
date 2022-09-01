@@ -652,6 +652,7 @@ class ContentController extends FrontendBaseController {
 
 				break;
 			case 'i-want-help-with':
+				//dd($subalias);
 				$page = 'frontend.i_want_help_with_article';
 				$this->data['bodyClass'] = '__help-details';
 				//$this->data['tags'] = $this->getPostTypeTags('news-opinion');
@@ -663,7 +664,7 @@ class ContentController extends FrontendBaseController {
 					//$title = 'post_title_arabic';
 				}
 
-				$articleDetails = PostModel::where('post_slug', '=', $subalias)->active()->first();
+				$articleDetails = PostModel::with(['media'])->where('post_type','i_want_help_with_article')->where('post_slug', '=', $subalias)->active()->first();
 
 				$postDetails = $articleDetails;
 				$this->data['articleDetails'] = $articleDetails;

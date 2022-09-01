@@ -56,6 +56,7 @@ class PostMediaController extends AdminBaseController {
 					case 'svg':
 					case 'gif':
 					case 'bmp':
+					case 'jpeg':
 						$mediaType = 'image';
 					break;
 					default:

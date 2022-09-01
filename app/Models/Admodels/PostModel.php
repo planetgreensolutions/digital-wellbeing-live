@@ -164,7 +164,7 @@ class PostModel extends Model implements AuditableContract
             
             $lang=(App::getLocale()=="en")?'ar':'en';
             
-            $tmp = $this->hasMany('\App\Models\Admodels\PostMediaModel', 'pm_post_id', 'post_id')->whereIn('pm_cat', ['gallery_file','video']);
+            $tmp = $this->hasMany('\App\Models\Admodels\PostMediaModel', 'pm_post_id', 'post_id')->whereIn('pm_cat', ['gallery_file','video'])->orderBy('pm_priority','asc');
             
             if (!empty(\Auth::user()) && \Auth::user()->isAdmin()) {
             } else {

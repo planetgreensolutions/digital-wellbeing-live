@@ -681,7 +681,7 @@ function getResourceAttachmentPlUploadControl($label, $controlName, $allowedMime
 }
 
 function showMediaItem($data) {
-
+    
 	switch ($data->pm_media_type) {
 
 	case 'image':
@@ -712,7 +712,7 @@ function showMediaItem($data) {
 		break;
 	default:
 
-		$dispElement = '<span class="fa-stack fa-lg">
+		$dispElement = '<span class="fa-stack fa-lg ">
 									<i class="fa fa-square fa-stack-2x text-primary"></i>
 									<i class="fa fa-file fa-stack-1x fa-inverse"></i>
 								</span>';

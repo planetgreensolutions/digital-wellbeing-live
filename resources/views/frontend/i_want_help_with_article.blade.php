@@ -136,24 +136,42 @@
                                                         <polygon points="30,30 0,30 0,0 27.447,4.787 "></polygon>
                                                         </svg>
                                                     </div>
-
+                                        @if(!empty($articleDetails->media) && $articleDetails->media->isNotEmpty())
                                         <div class="swiper-container">
                                             <div class="swiper-wrapper">
+                                               @foreach($articleDetails->media as $media)
+                                               @php
+                                                    $url=PP($media->getData('pm_file_hash'));
+                                                    $mediaBanner=PT($media->getData('pm_file_hash'));
+                                                    if($media->pm_media_type=="video"){
+                                                        $url=youtubeEmbedUrl($media->getData('pm_name')); 
+                                                        if(!empty($media->getData('pm_file_hash'))){
+                                                            $mediaBanner=PT($media->getData('pm_file_hash'));
+                                                        }else{
+                                                            $mediaBanner=youtubeImage($media->getData('pm_name'));
+                                                        }
+                                                    }
+                                                @endphp
                                                 <div class="swiper-slide">
                                                     <div class="img-box">
-                                                        <div class="img_" style="background-image: url({{ PP($articleDetails->getData('help_with_desc_image')) }});"></div>
+                                                        <a href="{{ $url }}" data-fancybox="gallery" class="link_" >
+                                                            <div class="img_" style="background-image: url({{ $mediaBanner }});"></div>
+                                                            @if($media->pm_media_type=="video")
+                                                            <div class="play_icon">
+                                                                <div class="icon icon-icon-arrow-right"></div>
+                                                            </div>
+                                                            @endif
+                                                        </a>
                                                     </div>
                                                 </div>
 
-                                                <div class="swiper-slide">
-                                                    <div class="img-box">
-                                                        <div class="img_" style="background-image: url({{ PP($articleDetails->getData('help_with_desc_image')) }});"></div>
-                                                    </div>
-                                                </div>
+                                                @endforeach
                                             </div>
 
                                             <div class="swiper-pagination"></div>
                                         </div>
+                                        
+                                        @endif
                                     </div>
                                 </div>
                                 @endif

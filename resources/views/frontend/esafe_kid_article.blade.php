@@ -49,7 +49,7 @@
                         <li class="r-tabs-tab r-tabs-state-active"><a class="r-tabs-anchor"
                                 href="#tab-1">{{ lang('be_an_eSafe_kid') }}</a></li>
                         <li class="r-tabs-tab "><a class="r-tabs-anchor" href="{{asset($lang.'/children')}}#tab-2">{{ lang('i_want_help_with') }}</a></li>
-                        <li class="r-tabs-tab"><a class="r-tabs-anchor" href="{{asset($lang.'/children')}}#tab-3">{{ lang('how_esafety_can_help') }}</a></li>
+                        <?php /* <li class="r-tabs-tab"><a class="r-tabs-anchor" href="{{asset($lang.'/children')}}#tab-3">{{ lang('how_esafety_can_help') }}</a></li> */ ?>
                     </ul>
 
                     <div class="r-tabs-state-active">
