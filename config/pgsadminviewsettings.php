@@ -264,6 +264,10 @@ return [
 	'young_people_article' => [
 		'buttons' => ['add' => true, 'edit' => true, 'delete' => true, 'status' => true],
 		'singlePost' => false,
+		'hasGallery' => true,
+		'hideGalleryLang' => false,
+		'hideGalleryText' => true,
+		'hideGallerySource' => true,
 	],
 
 	'young_people_blog' => [

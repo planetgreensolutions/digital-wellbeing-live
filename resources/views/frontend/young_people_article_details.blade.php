@@ -77,28 +77,54 @@ else
       </div>
 
       </div>
-
+      @if(!empty($postDetails->media) && $postDetails->media->isNotEmpty())
       <div class="side_box">
         <div class="swiper-container">
           <div class="swiper-wrapper">
+          @foreach($postDetails->media as $media)
+            @php
+                $url=PP($media->getData('pm_file_hash'));
+                $mediaBanner=PT($media->getData('pm_file_hash'));
+                if($media->pm_media_type=="video"){
+                    $url=youtubeEmbedUrl($media->getData('pm_name')); 
+                    if(!empty($media->getData('pm_file_hash'))){
+                        $mediaBanner=PT($media->getData('pm_file_hash'));
+                    }else{
+                        $mediaBanner=youtubeImage($media->getData('pm_name'));
+                    }
+                }
+            @endphp
+            
             <div class="swiper-slide side_bar_gallery_item">
-              <div class="inner_box">
-                <a href="#" data-fancybox class="link_">
-                  <div class="shape_ fill_lightblue">
-                      <svg x="0px" y="0px" viewBox="0 0 30 30" enable-background="new 0 0 30 30" xml:space="preserve"
-                      preserveAspectRatio="none">
-                      <polygon points="30,30 0,30 0,0 27.447,4.787 " />
-                      </svg>
-                    </div>
-                    <div class="img_box">
-                      <div class="img_ b-lazy" data-src="{{PP($postDetails->getData('young_people_article_image'))}}"></div>
-                    </div>
-                </a>
+                <div class="inner_box">
+                  <a href="{{ $url }}" data-fancybox="gallery" class="link_">
+                    <div class="shape_ fill_lightblue">
+                        <svg x="0px" y="0px" viewBox="0 0 30 30" enable-background="new 0 0 30 30" xml:space="preserve"
+                        preserveAspectRatio="none">
+                        <polygon points="30,30 0,30 0,0 27.447,4.787 " />
+                        </svg>
+                      </div>
+                      <div class="img_box">
+                        <div class="img_ b-lazy" data-src="{{ $mediaBanner }}"></div>
+                      </div>
+                      @if($media->pm_media_type=="video")
+                        <div class="play_icon">
+                            <div class="icon icon-icon-arrow-right"></div>
+                        </div>
+                        @endif
+                  </a>
+                </div>
               </div>
-            </div>
+
+            @endforeach
+
+           @endif
           </div>
+          <div class="swiper-pagination"></div>
         </div>
       </div>
+      
+      
     </div>
 
   </div>
@@ -376,6 +402,14 @@ else
 @section('scripts')
 @parent
 @include('frontend.script.inner_page_script')
+<script>
+        var swiper = new Swiper(".side_box .swiper-container", {
+            spaceBetween: 20,
+            pagination: {
+                el: ".side_box  .swiper-pagination",
+            },
+        });
+    </script>
 
 @stop
 
