@@ -91,9 +91,14 @@ hold-transition skin-blue sidebar-mini
 								</div>
 
 								<div class="row"> 	
+								   
 									<div class="col-sm-6 form-group">
 										{!! getSinglePlUploadControl('Upload Image (Max 2 MB) (400x400) (jpg,jpeg,png) ','young_people_article_image',['jpg','jpeg','png'],'image','Select File',null,null,@$postDetails->getData('young_people_article_image'),$postType) !!}
 									</div>
+									<div class="col-sm-6 form-group">
+										<label>Upload Page Banner</label>
+										{!! getSinglePlUploadControl(' (1100x500)(Max 2 MB) (jpg,jpeg) ','young_people_banner_inner',['jpg','jpeg'],'image','Select File',null,null,@$postDetails->getData('young_people_banner_inner'),$postType) !!}
+									</div>	
 								</div>	
 							
 							
