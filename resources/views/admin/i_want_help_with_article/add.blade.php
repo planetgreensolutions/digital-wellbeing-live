@@ -282,6 +282,7 @@
             </div>
         </div>
     </div>
+    @include('admin.common.media_gallery',['post_type'=>$postType])
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
         <div class="card">
             <div class="card-body">
@@ -336,6 +337,7 @@
             "{{ asset('storage/app/public/post') }}/");
         PGSADMIN.utils.createAjaxFileUploader("{{ route('post_media_create', ['slug' => $postType]) }}",
             "{{ apa('post_media_download') }}/", "{{ asset('storage/app/public/post') }}/");
+            PGSADMIN.utils.youtubeVideoThumbUploader('changeImage',"{{ route('post_media_create',['slug'=>$postType]) }}", "{{ asset('storage/app/public/post/') }}/","#galleryWrapper");
 
         $('#post_tags').tagsinput({
             confirmKeys: [13, 188]

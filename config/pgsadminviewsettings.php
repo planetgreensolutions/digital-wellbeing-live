@@ -274,5 +274,16 @@ return [
 	'kid_esafety' => [
 		'singlePost' => true,
 	],
+	'i_want_help_with_article' => [
+		'buttons' => ['add' => true, 'edit' => true, 'delete' => true, 'status' => true],
+		'listing' => [
+			'pagination' => 2,
+			'fields' => ['post_title', 'post_title_arabic'],
+		],
+		'hasGallery' => true,
+		'hideGalleryLang' => false,
+		'hideGalleryText' => true,
+		'hideGallerySource' => true,
+	],
 
 ];
