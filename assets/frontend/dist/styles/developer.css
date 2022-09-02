@@ -1359,4 +1359,16 @@ html[dir=rtl] .help-box .boxes .desc-box ul li:before {
     left: auto;
     right: 0;
 }
+
+.home-banner .container .banner_text_box h1 {
+    line-height: 1;
+}
+
+.section-title {
+    line-height: 1;
+}
+
+.section-title[data-number]:before {
+    line-height: 1;
+}
 /* AL 31-08-2022 */
