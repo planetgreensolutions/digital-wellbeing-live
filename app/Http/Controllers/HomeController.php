@@ -198,7 +198,6 @@ class HomeController extends FrontendBaseController {
 		if (strpos($redirectURL, $request->getSchemeAndHttpHost()) != 0) {
 			$redirectURL = null;
 		}
-
 		if ($this->data['websiteSettings']->disable_arabic == 2) {
 
 			if (!empty($redirectURL)) {
@@ -211,7 +210,9 @@ class HomeController extends FrontendBaseController {
 		}
 
 		if (!empty($redirectURL)) {
-	
+			if($redirectURL == "https://digitalwellbeing.ae/ar" || $redirectURL == "https://digitalwellbeing.ae/en") {
+			    $redirectURL .= "/";
+			}
 			if ($lang == 'ar') {
 
 				$redirectURL = str_replace('/en/','/ar/', $redirectURL);

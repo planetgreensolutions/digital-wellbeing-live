@@ -25,7 +25,8 @@ class RouteServiceProvider extends ServiceProvider
     {
         //
 
-        parent::boot();
+	    parent::boot();
+	    \URL::forceRootUrl(\Config::get('app.url'));
     }
 
     /**

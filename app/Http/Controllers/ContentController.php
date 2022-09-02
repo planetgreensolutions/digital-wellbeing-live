@@ -559,21 +559,22 @@ class ContentController extends FrontendBaseController {
 					'lang' => $lang,
 				];
 
+
 				if ($request->ajax()) {
 					if (request()->input('_tab') == "articles") {
 						$this->data['young_people_articles'] = $young_people_articles;
-						$ajaxResponse['moreArticle'] = !empty($young_people_articles->nextPageUrl()) ? $young_people_articles->nextPageUrl() : '';
+						$ajaxResponse['moreArticle'] = !empty($young_people_articles->nextPageUrl()) ? str_replace('172.21.19.103', 'digitalwellbeing.ae', $young_people_articles->nextPageUrl()) : '';
 						$ajaxResponse['articleHTML'] = view('frontend.ajax.young_people_articles_loader', $this->data)->render();
 						return response()->json($ajaxResponse);
 					} elseif (request()->input('_tab') == "blogs") {
 						$this->data['young_people_blogs'] = $young_people_blogs;
-						$ajaxResponse['moreBlog'] = !empty($young_people_blogs->nextPageUrl()) ? $young_people_blogs->nextPageUrl() : '';
+						$ajaxResponse['moreBlog'] = !empty($young_people_blogs->nextPageUrl()) ? str_replace('172.21.19.103', 'digitalwellbeing.ae', $young_people_blogs->nextPageUrl()) : '';
 						$ajaxResponse['blogHTML'] = view('frontend.ajax.young_people_blogs_loader', $this->data)->render();
 						return response()->json($ajaxResponse);
 					}
 					elseif (request()->input('_tab') == "guides") {
 						$this->data['guides'] = $guides;
-						$ajaxResponse['moreGuides'] = !empty($guides->nextPageUrl()) ? $guides->nextPageUrl() : '';
+						$ajaxResponse['moreGuides'] = !empty($guides->nextPageUrl()) ? str_replace('172.21.19.103', 'digitalwellbeing.ae', $guides->nextPageUrl()) : '';
 						$ajaxResponse['guidesHTML'] = view('frontend.ajax.young_people_guides_loader', $this->data)->render();
 						return response()->json($ajaxResponse);
 					}
@@ -613,7 +614,7 @@ class ContentController extends FrontendBaseController {
 				if ($request->ajax()) {
 					if (request()->input('_tab') == "articles") {
 						$this->data['ArticleList'] = $ArticleList;
-						$ajaxResponse['moreArticle'] = !empty($ArticleList->nextPageUrl()) ? str_replace('http://172.21.19.103', 'https://digitalwellbeing.ae', $ArticleList->nextPageUrl()) : '';
+						$ajaxResponse['moreArticle'] = !empty($ArticleList->nextPageUrl()) ? str_replace('https://172.21.19.103', 'https://digitalwellbeing.ae', $ArticleList->nextPageUrl()) : '';
 						$ajaxResponse['articleHTML'] = view('frontend.ajax.children_help_with_loader', $this->data)->render();
 						return response()->json($ajaxResponse);
 					}
@@ -852,7 +853,7 @@ class ContentController extends FrontendBaseController {
 
 		if ($request->ajax()) {
 			$this->data['young_people_articles'] = $young_people_articles;
-			$ajaxResponse['moreArticle'] = !empty($young_people_articles->nextPageUrl()) ? str_replace('http://172.21.19.103', 'https://digitalwellbeing.ae', $young_people_articles->nextPageUrl()) : '';
+			$ajaxResponse['moreArticle'] = !empty($young_people_articles->nextPageUrl()) ? str_replace('https://172.21.19.103', 'https://digitalwellbeing.ae', $young_people_articles->nextPageUrl()) : '';
 			$ajaxResponse['articleHTML'] = view('frontend.ajax.young_people_articles_loader', $this->data)->render();
 			return response()->json($ajaxResponse);
 		}
