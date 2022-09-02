@@ -473,6 +473,8 @@
 
             fetchResults(_url, _data, 'append', 'blogs', id);
         });
+
+        $('.dt-image').stickit({top : 100, screenMinWidth : 1024});
     </script>
 
 @stop
