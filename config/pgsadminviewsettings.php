@@ -274,6 +274,10 @@ return [
 		'buttons' => ['add' => true, 'edit' => true, 'delete' => true, 'status' => true],
 		'singlePost' => false,
 	],	
+	'young-people-guides' => [
+		'buttons' => ['add' => true, 'edit' => true, 'delete' => true, 'status' => true],
+		'singlePost' => false,
+	],	
 
 	'kid_esafety' => [
 		'singlePost' => true,
