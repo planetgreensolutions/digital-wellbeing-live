@@ -5,7 +5,7 @@ header .nav_box .nav_small_box .link_box ul li.search_wrapper .search_box .searc
     background: none !important; 
 }
 
-@media only screen and (min-width:1024px) and (max-width:1380px){
+@media only screen and (min-width:1024px) and (max-width:1500px){
     .section-title {
         font-size: 3rem;
     }
