@@ -3,7 +3,7 @@
 @if($lang=="ar")
    {{ HTML::style('assets/frontend/dist/styles/page-rtl.css') }} 
 @endif
-{{ HTML::style('assets/frontend/dist/styles/developer.css?234') }} 
+{{ HTML::style('assets/frontend/dist/styles/developer.css') }} 
  <style>
    .loader {
     position: fixed;

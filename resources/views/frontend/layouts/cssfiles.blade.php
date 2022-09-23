@@ -3,7 +3,7 @@
 	{{ HTML::style('assets/frontend/dist/styles/main-rtl.css') }} 
 
 @endif
-{{ HTML::style('assets/frontend/dist/styles/developer.css?2314') }} 
+{{ HTML::style('assets/frontend/dist/styles/developer.css') }} 
 
  <style>
    .loader {
