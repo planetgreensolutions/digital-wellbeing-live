@@ -78,7 +78,7 @@
                         </div>
                     </h1>
                     
-<?php /*
+
             @if (!empty($tags))
             <div class="tool_box">
 
@@ -105,7 +105,7 @@
                </div>
 
                @endif
- */ ?>                    
+                     
                </div>
                 </div>
 

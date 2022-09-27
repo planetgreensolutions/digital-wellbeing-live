@@ -123,7 +123,7 @@
 
                     <div class="help-box">
                         <div class="container">
-                            <h2 class="section-title  text-center"><span>{{ $articleDetails->getData('help_with_desc_heading') }}</span></h2>
+                            <h2 class="section-title sm_ text-center"><span>{{ $articleDetails->getData('help_with_desc_heading') }}</span></h2>
 
                             <div class="boxes">
 

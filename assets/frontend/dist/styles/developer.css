@@ -5,10 +5,18 @@ header .nav_box .nav_small_box .link_box ul li.search_wrapper .search_box .searc
     background: none !important; 
 }
 
+.section-title.sm_ {
+    font-size: 3rem;
+}
+
 @media only screen and (min-width:1024px) and (max-width:1500px){
     .section-title {
         font-size: 3rem;
     }
+    .section-title.sm_ {
+        font-size: 2rem;
+    }
+    
 }
 
 @media only screen and (min-width:1200px){
