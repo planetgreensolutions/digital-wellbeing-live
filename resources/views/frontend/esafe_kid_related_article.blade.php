@@ -2,10 +2,10 @@
     @foreach ($relatedArticles as $article)
         @php
             $articleImage = getFrontendAsset('images/default_tips_image.jpg');
-            if ($article->getData('esafe_kid_image1')) {
-                $articleImage = PP($article->getData('esafe_kid_image1'));
+            if (!empty($article->getMeta('esafe_kid_image1'))) {
+                $articleImage = PP($article->getMeta('esafe_kid_image1'));
             }
-            
+
             $x = $loop->index + 1;
             
             if ($x % 2 == 0) {
