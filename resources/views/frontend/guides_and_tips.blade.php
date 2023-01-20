@@ -35,75 +35,125 @@
 				</div>
 			 </h1>
 
-			 <div class="tool_box">
-			   
-				<div class="tool_item">
-				  <div class="label_in"> <label>{{lang('filter')}}</label></div> 
-					<div class="input-field">  
-					  <select name="tag_filter" id="tag_filter">
-						<option value="" selected>{{lang('all_topic')}}</option>
-						 @if(!empty($tags))
-							@foreach($tags as $tag)
-									  <option value="{{$tag->tag_name}}">{{$tag->tag_name}}</option>
-							 @endforeach
-						@endif
-					  </select>
-					
-					</div>
-				</div>
-			 </div>
+	
 			</div>
-			<div class="guide_wrapper" id="guide-block">
-				@if(!empty($guides_and_tips) && $guides_and_tips->count() > 0)
-				@foreach($guides_and_tips as $guidesTips)
-				@php 
-				$tipsBannerImage=getFrontendAsset('images/default_tips_image.jpg');
-				if($guidesTips->getData('guides_tips_banner')){
-				$tipsBannerImage=$guidesTips->getPostImage('guides_tips_banner','large');
-				}
-				@endphp
-				<div class="tip_item">
-					<div class="inner_ ">
-						<div class="top_box">
-							<a href="{{asset($lang.'/'.$guidesTips->getData('post_type').'/'.$guidesTips->getData('post_slug'))}}" class="full_link"></a>
-							<div class="shape_ fill_lightblue">
-								<svg x="0px" y="0px" viewBox="0 0 30 30" enable-background="new 0 0 30 30" xml:space="preserve"
-								preserveAspectRatio="none">
-								<polygon points="30,30 0,30 0,0 27.447,4.787 " />
-								</svg>
-							</div>
-							<div class="img_box">
-								<div class="img_ b-lazy" data-src="{{ $tipsBannerImage}}"></div>
-								<div class="meta_tag color-lightblue">
-									<ul>
-										@foreach($guidesTips->tags as $tag) 
-										<li>{{$tag->name}}</li>
-										@endforeach
-									</ul> 
+			
+			<div class="guide_filter_wrapper">
+
+				<div class="guide_wrapper" id="guide-block">
+					@if(!empty($guides_and_tips) && $guides_and_tips->count() > 0)
+					@foreach($guides_and_tips as $guidesTips)
+					@php 
+					$tipsBannerImage=getFrontendAsset('images/default_tips_image.jpg');
+					if($guidesTips->getData('guides_tips_banner')){
+					$tipsBannerImage=$guidesTips->getPostImage('guides_tips_banner','large');
+					}
+					@endphp
+					<div class="tip_item">
+						<div class="inner_ ">
+							<div class="top_box">
+								<a href="{{asset($lang.'/'.$guidesTips->getData('post_type').'/'.$guidesTips->getData('post_slug'))}}" class="full_link"></a>
+								<div class="img_box">
+									<div class="img_ b-lazy" data-src="{{ $tipsBannerImage}}"></div>
+									<div class="meta_tag color-lightblue">
+										<ul>
+											@foreach($guidesTips->tags as $tag) 
+											<li>{{$tag->name}}</li>
+											@endforeach
+										</ul> 
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="details_box">
-							<div class="title_">{{$guidesTips->post_title}}</div>
+							<div class="details_box">
+								<div class="title_">{{$guidesTips->post_title}}</div>
 
-							<div class="text_box">
-								<p>{{$guidesTips->getMeta('subtitle')}} </p>
+								<div class="text_box">
+									<p>{{$guidesTips->getMeta('subtitle')}} </p>
+								</div>
+
+								<div class="more-wrap ">
+									<a class="more_dote_ btn_lightblue" href="{{asset($lang.'/'.$guidesTips->getData('post_type').'/'.$guidesTips->getData('post_slug'))}}">
+										<span></span>
+										<span></span>
+										<span></span>
+									</a>
+								</div>
 							</div>
 
-							<div class="more-wrap ">
-								<a class="more_dote_ btn_lightblue" href="{{asset($lang.'/'.$guidesTips->getData('post_type').'/'.$guidesTips->getData('post_slug'))}}">
-									<span></span>
-									<span></span>
-									<span></span>
-								</a>
-							</div>
 						</div>
+					</div>
+					@endforeach
+					@endif
+				</div>
+
+				<div class="guide_filter">
+					<div class="label_">{{lang('filter')}}</div>
+					<div class="inner_">
+
+						<div class="input-field">  
+							<select name="tag_filter" id="tag_filter">
+								<option value="" selected>{{lang('all_topic')}}</option>
+								@if(!empty($tags))
+									@foreach($tags as $tag)
+											<option value="{{$tag->tag_name}}">{{$tag->tag_name}}</option>
+									@endforeach
+								@endif
+							</select>
+						</div>
+
+						<div class="tags_wrapper">
+							<a href="#" class="tags_">Cyberbullying</a>
+							<a href="#" class="tags_">Digital Citizenship</a>
+							<a href="#" class="tags_">Digital Wellbeing</a>
+							<a href="#" class="tags_">Online Safety</a>
+							<a href="#" class="tags_">Parental Controls</a>
+							<a href="#" class="tags_">Screen Time</a>
+						</div>
+
+						<div class="input-field">
+							<select name="tag_filter">
+								<option>Filter By Audience</option>
+								<option>Audience</option>
+								<option>Audience</option>
+								<option>Audience</option>
+							</select>
+						</div>
+
+						<div class="input-field">
+							<select name="tag_filter">
+								<option>Filter By Platform Type</option>
+								<option>Platform</option>
+								<option>Platform</option>
+								<option>Platform</option>
+							</select>
+						</div>
+
+
+						<div class="input-field">
+							<select name="tag_filter">
+								<option>Filter By Platform's purpose of use</option>
+								<option>Audience</option>
+								<option>Audience</option>
+								<option>Audience</option>
+							</select>
+						</div>
+
+						<div class="input-field">
+							<select name="tag_filter">
+								<option>Filter By Logo Color</option>
+								<option>Audience</option>
+								<option>Audience</option>
+								<option>Audience</option>
+							</select>
+						</div>
+						
+
 
 					</div>
 				</div>
-				@endforeach
-				@endif
 			</div>
+
+			
 			{{-- <div class="loader_box">
 			  <div class="loader_wrapper">
 				<div class="circle bot" ></div>

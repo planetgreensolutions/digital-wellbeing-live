@@ -120,8 +120,89 @@
             </div>
 
         </section>
+		
+		
+		 @if(!empty($guides)  && $guides->isNotEmpty())
+        <section class="page-section guide_sec">
+            <div class="container">
+                <div class="title_box with_tool ">
+                    <h1 class="section-title txt-up ">
+                    <div class="title_wr">
+                        <span> {{lang('guides')}}</span>
+                    </div>
+                    </h1>
+                </div>
+                <div class="inner_" id="guideWrapper">
+                    @include('frontend.ajax.kid_guides_loader')
+                </div>
+                @if(!empty($guides) && !empty($guides->nextPageUrl()))
+                <div style="{{ $article_loader_style }}" id="load_more_guides" class="more-wrap text-center"
+                    data-redirect="{{ $guides->nextPageUrl() }}">
+                    <a class="more " href="#">
+                        <div class="line_box">
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <span class="text_">{{ lang('load_more') }}</span>
+                    </a>
+                </div>
+                @endif
 
+                <div class="loader_box">
+                    <div class="loader_wrapper">
+                        <div class="circle bot"></div>
+                        <div class="circle mid"></div>
+                        <div class="circle top"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        @endif
 
+@if(!empty($blogList) && $blogList->count() > 0)
+
+  	  <section class="page-section">
+    <div class="container">
+       <div class="title_box ">
+         <h1 class="section-title txt-up text-center" >
+            <div class="title_wr">
+               <span>{{ lang('blogs') }}</span>
+            </div>
+         </h1>
+      </div>
+        <div class="guide_wrapper" id="blogWrapper">
+
+        	@include('frontend.ajax.kid_blog_loader')
+
+          @php
+		  
+		  
+              $blog_loader_style = !empty($blogList->nextPageUrl()) ? '' : 'display:none;';
+          @endphp
+    
+
+      </div>
+      <div style="{{ $blog_loader_style }}" id="load_more_blogs" class="more-wrap text-center" data-redirect="{{ $blogList->nextPageUrl() }}">
+	            <a class="more " href="#">
+	              <div class="line_box">
+	                <span></span>
+	                <span></span>
+	              </div>
+	              <span class="text_">{{ lang('load_more') }}</span>
+	            </a>
+	      </div>
+
+				<div class="loader_box">
+						  <div class="loader_wrapper">
+							<div class="circle bot" ></div>
+							<div class="circle mid" ></div>
+							<div class="circle top" ></div>
+						  </div>
+			  </div>
+    </div>
+  </section>
+
+	@endif
 
 
     </main>
@@ -320,7 +401,14 @@
 
                             $("#load_more_" + articlesActiveTab).remove();
 
-                        } 
+                        } else if (_tab == "guides") {
+                            wrapperName = "guideWrapper";
+                            dataHTML = responseData.guidesHTML;
+                            paginateURL = responseData.moreGuides;
+                            activeTab = 'guides';
+
+                            $("#load_more_guides").remove();
+                        }
 
                         switch (_mode) {
                             case "append":
@@ -362,6 +450,19 @@
             };
 
             fetchResults(_url, _data, 'append', 'articles', id);
+        });
+		$(document).on('click', "#load_more_guides", function(e) {
+            e.preventDefault();
+
+            var id = $(this).attr('id');
+            var _url = $(this).attr('data-redirect');
+
+            var _data = {
+                "_token": "{{ csrf_token() }}",
+                "_tab": "guides",
+            };
+
+            fetchResults(_url, _data, 'append', 'guides', id);
         });
 
     </script>

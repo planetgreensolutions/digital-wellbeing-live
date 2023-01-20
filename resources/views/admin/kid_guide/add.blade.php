@@ -57,19 +57,19 @@ hold-transition skin-blue sidebar-mini
 								
 								<div class="row"> 	
 									<div class="col-sm-6 form-group">
-										{!! getSinglePlUploadControl('Upload Image (Max 2 MB) (449x601) (jpg,jpeg,png) ','young_people_guides_image',['jpg','jpeg','png'],'image','Select File',null,null,old('meta')['text']['young_people_guides_image'],$postType) !!}
+										{!! getSinglePlUploadControl('Upload Image (Max 2 MB) (449x601) (jpg,jpeg,png) ','kid_guides_image',['jpg','jpeg','png'],'image','Select File',null,null,old('meta')['text']['kid_guides_image'],$postType) !!}
 									</div>
 									<div class="col-sm-6 form-group">
-										{!! getSinglePlUploadControl('Upload Image Arabic (Max 2 MB) (449x601) (jpg,jpeg,png) ','young_people_guides_image_arabic',['jpg','jpeg','png'],'image','Select File',null,null,old('meta')['text']['young_people_guides_image_arabic'],$postType) !!}
+										{!! getSinglePlUploadControl('Upload Image Arabic (Max 2 MB) (449x601) (jpg,jpeg,png) ','kid_guides_image_arabic',['jpg','jpeg','png'],'image','Select File',null,null,old('meta')['text']['kid_guides_image_arabic'],$postType) !!}
 									</div>
 								</div>
 
 							<div class="row"> 	
 									<div class="col-sm-6 form-group">
-										{!! getSinglePlUploadControl('Upload PDF (Max 2 MB)  (pdf) ','young_people_guides_pdf',['pdf'],'file','Select File',null,null,old('meta')['text']['young_people_guides_pdf'],$postType) !!}
+										{!! getSinglePlUploadControl('Upload PDF (Max 2 MB)  (pdf) ','kid_guides_pdf',['pdf'],'file','Select File',null,null,old('meta')['text']['kid_guides_pdf'],$postType) !!}
 									</div>
 									<div class="col-sm-6 form-group">
-										{!! getSinglePlUploadControl('Upload PDF Arabic(Max 2 MB)  (pdf) ','young_people_guides_pdf_arabic',['pdf'],'file','Select File',null,null,old('meta')['text']['young_people_guides_pdf_arabic'],$postType) !!}
+										{!! getSinglePlUploadControl('Upload PDF Arabic(Max 2 MB)  (pdf) ','kid_guides_pdf_arabic',['pdf'],'file','Select File',null,null,old('meta')['text']['kid_guides_pdf_arabic'],$postType) !!}
 									</div>
 								</div>								
 								

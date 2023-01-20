@@ -178,7 +178,14 @@
 												</li>
 											</ul>
 										</div>
-									</li>																		
+									</li>	
+									<?php /*<li class="nav-item">
+										<a class="nav-link {{ get_admin_menu_active_class($currentURI,'kid_blog') }}" href="{{ apa('post/kid_blog') }}"><i class="fas fa-users"></i>Manage Blog</a>
+									</li> */ ?>
+
+									<li class="nav-item">
+										<a class="nav-link {{ get_admin_menu_active_class($currentURI,'kid_guide') }}" href="{{ apa('post/kid_guide') }}"><i class="fas fa-users"></i>Manage Guides</a>
+									</li>
 								</ul>
 							</div>
 						</li>						

@@ -1387,3 +1387,122 @@ html[dir=rtl] .help-box .boxes .desc-box ul li:before {
     line-height: 1;
 }
 /* AL 31-08-2022 */
+
+/* AL 18-11-2022 */
+
+.guide_filter_wrapper{
+    position: relative;
+    display: grid;
+    grid-template-columns: 0.75fr 0.25fr;
+    grid-gap: 1.5em;
+    align-items: flex-start;
+}
+
+@media only screen and (max-width:767px){
+    .guide_filter_wrapper{
+        grid-template-columns: 1fr;
+    }
+}
+
+.guide_filter_wrapper .guide_filter {
+    position: relative;
+    display: block;
+    background: #f5f5f5;
+}
+
+.guide_filter .label_ {
+    position: relative;
+    display: inline-block;
+    background: #14c0d8;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.65em 1em;
+}
+
+.guide_filter .inner_ {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1em;
+    width: 100%;
+    padding: 1em;
+}
+
+.guide_filter .select-wrapper:before {
+    display: none;
+}
+
+.guide_filter .select-wrapper:after, .guide_filter .select-wrapper:before {
+    background-color: #202020;
+}
+
+.guide_filter .input-field {
+    margin: 0;
+}
+
+.guide_wrapper {
+    width: calc(100% + 2em);
+}
+
+.guide_filter_wrapper .tip_item .inner_ .top_box {
+    padding: 0;
+}
+
+.guide_filter_wrapper .tip_item .inner_ .details_box {
+    padding: 0;
+    margin-top: 1em;
+}
+
+.guide_filter_wrapper .tip_item .inner_ .top_box .img_box .meta_tag {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: auto;
+    margin: 1em;
+}
+
+.guide_filter_wrapper .tip_item .inner_:hover .top_box .img_box .meta_tag{
+    transform: none;
+}
+@media only screen and (min-width:1200px){
+    .guide_filter_wrapper .guide_wrapper .tip_item {
+        width: calc(33.3331% - 2em);
+        margin-left: 1em;
+        margin-right: 1em;
+    }
+}
+
+html[dir=rtl] .guide_filter_wrapper .tip_item .inner_ .top_box .img_box .meta_tag {
+    left: auto;
+    right: 0;
+}
+
+.tags_wrapper {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 0.5em;
+    background: #fff;
+    padding: 0.5em;
+    border-radius: 0.5em;
+}
+
+.tags_wrapper .tags_ {
+    position: relative;
+    display: block;
+    padding: 0.25em;
+    font-size: 0.65rem;
+    font-weight: 500;
+    background: #f5f5f5;
+    color: #202020;
+    transition: all 0.3s ease;
+    padding: 0.25em 0.75em;
+    border-radius: 1em;
+}
+
+.tags_wrapper .tags_:hover{
+    background: #14c0d8;
+    color: #fff;
+}
+/* AL 18-11-2022 */

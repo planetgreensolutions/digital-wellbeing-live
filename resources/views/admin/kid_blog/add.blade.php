@@ -14,7 +14,7 @@ hold-transition skin-blue sidebar-mini
 	<div class="row">
 		<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 			<div class="page-header">
-				<h2 class="pageheader-title">New Guides
+				<h2 class="pageheader-title">New Blog
 				<?php /*
 					<a class="float-sm-right" href="{{ apa('category_manager/create') }}">
 						<button class="btn btn-success btn-flat">Create New Category</button>
@@ -55,23 +55,35 @@ hold-transition skin-blue sidebar-mini
 									
 								</div>
 								
+								
+								<div class="row"> 	
+									
+									<div class="col-sm-6 form-group">
+										<label>Description</label>
+										<textarea name="meta[text][description]" class="form-control  ckeditorEn" id="description" placeholder="" >{{ old('meta')['text']['description'] }}</textarea> 
+									</div>
+									
+									<div class="col-sm-6 form-group">
+										<label>Description[Arabic]</label>
+										<textarea name="meta[text][description_arabic]" class="form-control  ckeditorEn" id="description_arabic" placeholder="" >{{ old('meta')['text']['description_arabic'] }}</textarea> 
+									</div>
+									
+								</div>	
+
 								<div class="row"> 	
 									<div class="col-sm-6 form-group">
-										{!! getSinglePlUploadControl('Upload Image (Max 2 MB) (449x601) (jpg,jpeg,png) ','young_people_guides_image',['jpg','jpeg','png'],'image','Select File',null,null,old('meta')['text']['young_people_guides_image'],$postType) !!}
-									</div>
-									<div class="col-sm-6 form-group">
-										{!! getSinglePlUploadControl('Upload Image Arabic (Max 2 MB) (449x601) (jpg,jpeg,png) ','young_people_guides_image_arabic',['jpg','jpeg','png'],'image','Select File',null,null,old('meta')['text']['young_people_guides_image_arabic'],$postType) !!}
-									</div>
-								</div>
-
-							<div class="row"> 	
-									<div class="col-sm-6 form-group">
-										{!! getSinglePlUploadControl('Upload PDF (Max 2 MB)  (pdf) ','young_people_guides_pdf',['pdf'],'file','Select File',null,null,old('meta')['text']['young_people_guides_pdf'],$postType) !!}
-									</div>
-									<div class="col-sm-6 form-group">
-										{!! getSinglePlUploadControl('Upload PDF Arabic(Max 2 MB)  (pdf) ','young_people_guides_pdf_arabic',['pdf'],'file','Select File',null,null,old('meta')['text']['young_people_guides_pdf_arabic'],$postType) !!}
-									</div>
+										<label>Tags</label>
+										<input type="text" name="post_tags" id="post_tags"  class="form-control" placeholder="" value="{{ old('post_tags') }}"  />
+										(Hit enter to add multiple tags)
+									</div>	
+										
 								</div>								
+
+								<div class="row"> 	
+									<div class="col-sm-6 form-group">
+										{!! getSinglePlUploadControl('Upload Image (Max 2 MB) (400x400) (jpg,jpeg,png) ','young_people_blog_image',['jpg','jpeg','png'],'image','Select File',null,null,old('meta')['text']['young_people_blog_image'],$postType) !!}
+									</div>
+								</div>	
 								
 				
 							

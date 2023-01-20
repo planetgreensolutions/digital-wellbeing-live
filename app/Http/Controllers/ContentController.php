@@ -598,6 +598,9 @@ class ContentController extends FrontendBaseController {
 				}
 
 				//tab1
+				$kidGuideList = PostModel::where('post_type', '=', 'kid_guide')->active()->paginate(12);
+				$blogList = PostModel::where('post_type', '=', 'kid_blog')->active()->paginate(12);
+				
 				$CategoryList = PostModel::where('post_type', '=', 'be_an_esafe_kid')->active()->get();
 
 				//tab2
@@ -617,7 +620,13 @@ class ContentController extends FrontendBaseController {
 						$ajaxResponse['moreArticle'] = !empty($ArticleList->nextPageUrl()) ? str_replace('https://172.21.19.103', 'https://digitalwellbeing.ae', $ArticleList->nextPageUrl()) : '';
 						$ajaxResponse['articleHTML'] = view('frontend.ajax.children_help_with_loader', $this->data)->render();
 						return response()->json($ajaxResponse);
+					}elseif (request()->input('_tab') == "guides") {
+						$this->data['guides'] = $kidGuideList;
+						$ajaxResponse['moreGuides'] = !empty($kidGuideList->nextPageUrl()) ? str_replace('172.21.19.103', 'digitalwellbeing.ae', $kidGuideList->nextPageUrl()) : '';
+						$ajaxResponse['guidesHTML'] = view('frontend.ajax.kid_guides_loader', $this->data)->render();
+						return response()->json($ajaxResponse);
 					}
+					
 				}
 
 				$postDetails = $CategoryList;
@@ -625,6 +634,8 @@ class ContentController extends FrontendBaseController {
 				$this->data['ArticleList'] = $ArticleList;
 				$this->data['aboutEsafety'] = $aboutEsafety;
 				$this->data['reportQuestios'] = $reportQuestios;
+				$this->data['blogList'] = $blogList;
+				$this->data['guides'] = $kidGuideList;
 
 				break;
 			case 'be-an-esafe-kid':
@@ -671,6 +682,9 @@ class ContentController extends FrontendBaseController {
 				$this->data['articleDetails'] = $articleDetails;
 
 				break;
+				
+			
+				
 			default:
 				$page = 'frontend.default'; //$page = 'errors.404';
 				break;
@@ -748,6 +762,15 @@ class ContentController extends FrontendBaseController {
 
 				$this->data['postDetails'] = $postDetails;
 				$page = 'frontend.young_people_blog_details';
+				break;
+			case 'kids':
+				$postDetails = PostModel::with(['category'])->where('post_slug', $subalias)->active()->first();
+				if (empty($postDetails)) {
+					return redirect()->to($lang . '/');
+				}
+
+				$this->data['postDetails'] = $postDetails;
+				$page = 'frontend.kid_blog_details';
 				break;
 
 			default:
