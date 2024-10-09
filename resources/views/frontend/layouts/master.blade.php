@@ -16,9 +16,25 @@
 	<meta name="author" content="{{{@$websiteSettings->site_meta_title}}}" /> 
     
 	@show
+
+	@if(config('app.env') == "production" && !empty(config('app.google_analytics')))
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ config('app.google_analytics') }}">
+        </script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', '{{ config('app.google_analytics') }}');
+        </script>
+	@endif
+
 	@section('styles')
 		@include('frontend.layouts.cssfiles')
 	@show
+
 	<script>
 		
 		window._token = {!! json_encode([

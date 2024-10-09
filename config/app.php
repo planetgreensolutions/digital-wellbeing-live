@@ -11,8 +11,8 @@ return [
     | framework needs to place the application's name in a notification or
     | any other location as required by the application or its packages.
     |
-    */
-	'admin_prefix' => env('ADMIN_PREFIX','admin'),
+     */
+    'admin_prefix' => env('ADMIN_PREFIX', 'admin'),
     'name' => env('APP_NAME', 'Laravel'),
 
     /*
@@ -24,9 +24,10 @@ return [
     | running in. This may determine how you prefer to configure various
     | services the application utilizes. Set this in your ".env" file.
     |
-    */
+     */
 
     'env' => env('APP_ENV', 'production'),
+    'google_analytics' => env('GOOGLE_ANALYTICS', ""),
 
     /*
     |--------------------------------------------------------------------------
@@ -37,7 +38,7 @@ return [
     | stack traces will be shown on every error that occurs within your
     | application. If disabled, a simple generic error page is shown.
     |
-    */
+     */
 
     'debug' => env('APP_DEBUG', false),
 
@@ -50,7 +51,7 @@ return [
     | the Artisan command line tool. You should set this to the root of
     | your application so that it is used when running Artisan tasks.
     |
-    */
+     */
 
     'url' => env('APP_URL', 'https://digitalwellbeing.ae'),
 
@@ -65,9 +66,9 @@ return [
     | will be used by the PHP date and date-time functions. We have gone
     | ahead and set this to a sensible default for you out of the box.
     |
-    */
+     */
 
-	'timezone' => 'Asia/Dubai',
+    'timezone' => 'Asia/Dubai',
 
     /*
     |--------------------------------------------------------------------------
@@ -78,7 +79,7 @@ return [
     | by the translation service provider. You are free to set this value
     | to any of the locales which will be supported by the application.
     |
-    */
+     */
 
     'locale' => 'en',
 
@@ -91,7 +92,7 @@ return [
     | is not available. You may change the value to correspond to any of
     | the language folders that are provided through your application.
     |
-    */
+     */
 
     'fallback_locale' => 'en',
 
@@ -104,7 +105,7 @@ return [
     | data for your database seeds. For example, this will be used to get
     | localized telephone numbers, street address information and more.
     |
-    */
+     */
 
     'faker_locale' => 'en_US',
 
@@ -117,7 +118,7 @@ return [
     | to a random, 32 character string, otherwise these encrypted strings
     | will not be safe. Please do this before deploying an application!
     |
-    */
+     */
 
     'key' => env('APP_KEY'),
 
@@ -132,7 +133,7 @@ return [
     | request to your application. Feel free to add your own services to
     | this array to grant expanded functionality to your applications.
     |
-    */
+     */
 
     'providers' => [
 
@@ -159,7 +160,7 @@ return [
         Illuminate\Auth\Passwords\PasswordResetServiceProvider::class,
         Illuminate\Session\SessionServiceProvider::class,
         // Illuminate\Translation\TranslationServiceProvider::class, //COmmented for waavi
-		
+
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
@@ -175,28 +176,28 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-		
-		//Installed
-		'Fideloper\Proxy\TrustedProxyServiceProvider',
-		Intervention\Image\ImageServiceProvider::class,
-		Jenssegers\Agent\AgentServiceProvider::class,
-		Maatwebsite\Excel\ExcelServiceProvider::class,
-		niklasravnsborg\LaravelPdf\PdfServiceProvider::class,
-		OwenIt\Auditing\AuditingServiceProvider::class,
-		Plank\Metable\MetableServiceProvider::class,
-		Spatie\Permission\PermissionServiceProvider::class,
-		Thujohn\Twitter\TwitterServiceProvider::class,
-		Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
-		Venturecraft\Revisionable\RevisionableServiceProvider::class,
-		Waavi\Translation\TranslationServiceProvider::class,
-		Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
-		Nestable\NestableServiceProvider::class,
-		App\Providers\HelperServiceProvider::class,		
-		Collective\Html\HtmlServiceProvider::class,
-		
-		//Custom Created
-		// App\Providers\NestableCategoryServiceProvider::class,
-		Pgs\Translator\TranslatorServiceProvider::class,
+
+        //Installed
+        'Fideloper\Proxy\TrustedProxyServiceProvider',
+        Intervention\Image\ImageServiceProvider::class,
+        Jenssegers\Agent\AgentServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+        niklasravnsborg\LaravelPdf\PdfServiceProvider::class,
+        OwenIt\Auditing\AuditingServiceProvider::class,
+        Plank\Metable\MetableServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
+        Thujohn\Twitter\TwitterServiceProvider::class,
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+        Venturecraft\Revisionable\RevisionableServiceProvider::class,
+        Waavi\Translation\TranslationServiceProvider::class,
+        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
+        Nestable\NestableServiceProvider::class,
+        App\Providers\HelperServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
+
+        //Custom Created
+        // App\Providers\NestableCategoryServiceProvider::class,
+        Pgs\Translator\TranslatorServiceProvider::class,
 
     ],
 
@@ -209,7 +210,7 @@ return [
     | is started. However, feel free to register as many as you wish as
     | the aliases are "lazy" loaded so they don't hinder performance.
     |
-    */
+     */
 
     'aliases' => [
 
@@ -248,26 +249,25 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-		
-		
-		//User installed
-		'Input' => Illuminate\Support\Facades\Input::class,
+
+        //User installed
+        'Input' => Illuminate\Support\Facades\Input::class,
         'Form' => Collective\Html\FormFacade::class,
         'HTML' => Collective\Html\HtmlFacade::class,
-		
-        'Nestable' => Nestable\Facades\NestableService::class,		
-		'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
-		'Image' => Intervention\Image\Facades\Image::class,
-		'Agent' => Jenssegers\Agent\Facades\Agent::class,
-		'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-		'PDF' => niklasravnsborg\LaravelPdf\Facades\Pdf::class,
-		'Zxcvbn' => REBELinBLUE\Zxcvbn\ZxcvbnFacade::class,
-		'Twitter' => Thujohn\Twitter\Facades\Twitter::class,		
-		'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
-		'JWTFactory' => Tymon\JWTAuthFacades\JWTFactory::class,
+
+        'Nestable' => Nestable\Facades\NestableService::class,
+        'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
+        'Image' => Intervention\Image\Facades\Image::class,
+        'Agent' => Jenssegers\Agent\Facades\Agent::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'PDF' => niklasravnsborg\LaravelPdf\Facades\Pdf::class,
+        'Zxcvbn' => REBELinBLUE\Zxcvbn\ZxcvbnFacade::class,
+        'Twitter' => Thujohn\Twitter\Facades\Twitter::class,
+        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
+        'JWTFactory' => Tymon\JWTAuthFacades\JWTFactory::class,
     ],
-	
-	'debug_blacklist' => [
+
+    'debug_blacklist' => [
         '_ENV' => [
             'APP_KEY',
             'DB_PASSWORD',
@@ -276,8 +276,8 @@ return [
             'DB_PORT',
             'DB_HOST',
             'DB_CONNECTION',
-			
-			'MAIL_DRIVER',
+
+            'MAIL_DRIVER',
             'MAIL_HOST',
             'MAIL_PORT',
             'MAIL_USERNAME',
@@ -296,8 +296,8 @@ return [
             'SCRIPT_FILENAME',
             'CONTEXT_DOCUMENT_ROOT',
             'REMOTE_PORT',
-			
-			'MAIL_DRIVER',
+
+            'MAIL_DRIVER',
             'MAIL_HOST',
             'MAIL_PORT',
             'MAIL_USERNAME',
